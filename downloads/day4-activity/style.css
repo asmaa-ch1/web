@@ -1,0 +1,112 @@
+/* DAY 4 ACTIVITY: style.css
+   HOW TO PLAY: change a value, save (Ctrl+S / Cmd+S), and look at BOTH pages.
+   Every rule looks like:   selector { property: value; }
+   Look for "CHANGE ME" comments for ideas. */
+
+
+/* ---------- 1. THE WHOLE PAGE ---------- */
+body {
+  font-family: Arial, sans-serif;   /* CHANGE ME: try Georgia, Verdana, "Courier New" */
+  background-color: #f4f6ff;        /* CHANGE ME: page background, try #fff3e0 or #e8f5e9 */
+  color: #222222;                   /* CHANGE ME: text color */
+  margin: 0;                        /* removes the space around the page edge */
+}
+
+
+/* ---------- 2. HEADER AND MENU ---------- */
+header {
+  background-color: #3556c9;        /* CHANGE ME: header color, try #c0392b or #1b7f5c */
+  color: white;                     /* the color of the name in the header */
+  padding: 20px;                    /* space inside the header */
+  text-align: center;               /* left, center, or right */
+}
+
+h1 {
+  font-size: 36px;                  /* CHANGE ME: bigger or smaller */
+  margin: 0;                        /* removes the space around the heading */
+}
+
+nav {
+  background-color: #2a45a0;        /* CHANGE ME: menu bar color */
+  padding: 10px;
+  text-align: center;
+}
+
+.menu-link {                        /* the dot means: every element with class="menu-link" */
+  color: white;
+  font-size: 18px;                  /* CHANGE ME */
+  margin: 0 12px;                   /* space left and right of each link */
+  text-decoration: none;            /* removes the underline; try underline */
+}
+
+
+/* ---------- 3. TEXT ---------- */
+h2 {
+  color: #3556c9;                   /* CHANGE ME: heading color */
+  font-size: 26px;                  /* CHANGE ME */
+}
+
+p {
+  font-size: 18px;                  /* CHANGE ME */
+  line-height: 1.5;                 /* space between lines */
+}
+
+#welcome {                          /* the hash means: the one element with id="welcome" */
+  font-size: 24px;
+  color: #3556c9;                   /* CHANGE ME */
+}
+
+.highlight {                        /* every element with class="highlight" */
+  background-color: #fff3a3;        /* CHANGE ME: try #ffd6e0 or #d6f5ff */
+  padding: 10px;
+}
+
+
+/* ---------- 4. SECTIONS (THE WHITE CARDS) ---------- */
+main {
+  padding: 20px;
+}
+
+section {
+  background-color: white;
+  border: 1px solid #cccccc;        /* CHANGE ME: try 3px solid #3556c9 */
+  border-radius: 8px;               /* rounded corners: try 20px or 0px */
+  padding: 20px;                    /* space INSIDE each card */
+  margin-bottom: 20px;              /* space OUTSIDE, below each card */
+}
+
+img {
+  width: 200px;                     /* CHANGE ME: picture width */
+  border-radius: 8px;
+}
+
+
+/* ---------- 5. BUTTON ---------- */
+.button {
+  background-color: #3556c9;        /* CHANGE ME: button color */
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.button:hover {                     /* only while the mouse is on the button */
+  background-color: #1d3a9e;
+}
+
+
+/* ---------- 6. FOOTER ---------- */
+footer {
+  text-align: center;
+  color: #666666;
+  padding: 20px;
+}
+
+
+/* ---------- 7. YOUR TURN: CHALLENGES ----------
+   1. Choose a color theme (3 colors) and use it everywhere.
+   2. Make the headings a different font.
+   3. Make the section cards bigger with more padding.
+   4. Add a shadow to the cards:  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+   5. Add your own rule below (for example, style the li tags).
+---------------------------------------------------- */
