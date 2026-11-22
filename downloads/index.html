@@ -26,16 +26,16 @@ a.home{color:var(--ac)}
 </style>
 </head>
 <body>
-<p><a class="home" href="../index.html">← Back to the course home</a></p>
+<p><a class="home" href="index.html">← Back to the course home</a></p>
 <div class="tag">Workshop files</div>
 <h1>Code files</h1>
 <div class="how"><b>How to use them in VS Code</b><ol>
 <li>Create a new folder on your computer.</li>
-<li>For each file, click <b>Copy code</b>, create a new file in VS Code with the same name, and paste. Or click <b>Download the whole folder</b> and unzip it.</li>
+<li>For each file, click <b>Copy code</b>, create a new file in VS Code with the same name, and paste. Or click <b>Download</b> to save the file, then move it into your folder.</li>
 <li>Keep files that belong together in the <b>same folder</b>.</li>
 <li>Open the HTML file with Live Server and see the result.</li></ol></div>
-<section id="with-and-without"><div class="tag">Session 1</div><h2>HTML, CSS and JS: with and without</h2><p>Three versions of the same page: HTML only, then + CSS, then + JavaScript.</p><p><a class="b" href="with-and-without.zip" download>Download the whole folder (.zip)</a></p>
-<div class="file"><div class="fh"><b>1-html-only.html</b><span><button class="b cp">Copy code</button><a class="b alt" href="with-and-without/1-html-only.html" download="1-html-only.html">Download</a><a class="b alt" href="with-and-without/1-html-only.html" target="_blank">See the result</a></span></div><pre>&lt;!DOCTYPE html&gt;
+<section id="with-and-without"><div class="tag">Session 1</div><h2>HTML, CSS and JS: with and without</h2><p>Three versions of the same page: HTML only, then + CSS, then + JavaScript.</p>
+<div class="file"><div class="fh"><b>1-html-only.html</b><span><button class="b cp">Copy code</button><button class="b alt dl" data-n="1-html-only.html">Download</button></span></div><pre>&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
   &lt;meta charset=&quot;UTF-8&quot;&gt;
@@ -60,7 +60,7 @@ a.home{color:var(--ac)}
 &lt;/body&gt;
 &lt;/html&gt;
 </pre></div>
-<div class="file"><div class="fh"><b>2-html-css.html</b><span><button class="b cp">Copy code</button><a class="b alt" href="with-and-without/2-html-css.html" download="2-html-css.html">Download</a><a class="b alt" href="with-and-without/2-html-css.html" target="_blank">See the result</a></span></div><pre>&lt;!DOCTYPE html&gt;
+<div class="file"><div class="fh"><b>2-html-css.html</b><span><button class="b cp">Copy code</button><button class="b alt dl" data-n="2-html-css.html">Download</button></span></div><pre>&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
   &lt;meta charset=&quot;UTF-8&quot;&gt;
@@ -119,7 +119,7 @@ a.home{color:var(--ac)}
 &lt;/body&gt;
 &lt;/html&gt;
 </pre></div>
-<div class="file"><div class="fh"><b>3-html-css-js.html</b><span><button class="b cp">Copy code</button><a class="b alt" href="with-and-without/3-html-css-js.html" download="3-html-css-js.html">Download</a><a class="b alt" href="with-and-without/3-html-css-js.html" target="_blank">See the result</a></span></div><pre>&lt;!DOCTYPE html&gt;
+<div class="file"><div class="fh"><b>3-html-css-js.html</b><span><button class="b cp">Copy code</button><button class="b alt dl" data-n="3-html-css-js.html">Download</button></span></div><pre>&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
   &lt;meta charset=&quot;UTF-8&quot;&gt;
@@ -190,8 +190,8 @@ a.home{color:var(--ac)}
 &lt;/html&gt;
 </pre></div>
 </section>
-<section id="my-site"><div class="tag">Session 1</div><h2>Linked project</h2><p>HTML, CSS and JS in separate files, connected with link and script tags. Keep all files in the same folder.</p><p><a class="b" href="my-site.zip" download>Download the whole folder (.zip)</a></p>
-<div class="file"><div class="fh"><b>index.html</b><span><button class="b cp">Copy code</button><a class="b alt" href="my-site/index.html" download="index.html">Download</a><a class="b alt" href="my-site/index.html" target="_blank">See the result</a></span></div><pre>&lt;!DOCTYPE html&gt;
+<section id="my-site"><div class="tag">Session 1</div><h2>Linked project</h2><p>HTML, CSS and JS in separate files, connected with link and script tags. Keep all files in the same folder.</p>
+<div class="file"><div class="fh"><b>index.html</b><span><button class="b cp">Copy code</button><button class="b alt dl" data-n="index.html">Download</button></span></div><pre>&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
   &lt;meta charset=&quot;UTF-8&quot;&gt;
@@ -222,7 +222,7 @@ a.home{color:var(--ac)}
 &lt;/body&gt;
 &lt;/html&gt;
 </pre></div>
-<div class="file"><div class="fh"><b>style.css</b><span><button class="b cp">Copy code</button><a class="b alt" href="my-site/style.css" download="style.css">Download</a></span></div><pre>body {
+<div class="file"><div class="fh"><b>style.css</b><span><button class="b cp">Copy code</button><button class="b alt dl" data-n="style.css">Download</button></span></div><pre>body {
   font-family: Arial, sans-serif;
   background: #eef2ff;
   color: #1c2230;
@@ -257,7 +257,7 @@ button {
   cursor: pointer;
 }
 </pre></div>
-<div class="file"><div class="fh"><b>function.js</b><span><button class="b cp">Copy code</button><a class="b alt" href="my-site/function.js" download="function.js">Download</a></span></div><pre>let clicks = 0;
+<div class="file"><div class="fh"><b>function.js</b><span><button class="b cp">Copy code</button><button class="b alt dl" data-n="function.js">Download</button></span></div><pre>let clicks = 0;
 
 function sayHi() {
   clicks = clicks + 1;
@@ -265,7 +265,7 @@ function sayHi() {
     &quot;You clicked &quot; + clicks + &quot; time(s)!&quot;;
 }
 </pre></div>
-<div class="file"><div class="fh"><b>style-explained.css</b><span><button class="b cp">Copy code</button><a class="b alt" href="my-site/style-explained.css" download="style-explained.css">Download</a></span></div><pre>/* HOW CSS IS READ:
+<div class="file"><div class="fh"><b>style-explained.css</b><span><button class="b cp">Copy code</button><button class="b alt dl" data-n="style-explained.css">Download</button></span></div><pre>/* HOW CSS IS READ:
    selector { property: value; }
    selector = WHAT to style     property = WHICH thing to change     value = HOW */
 
@@ -305,8 +305,8 @@ button {                            /* style the &lt;button&gt; */
 }
 </pre></div>
 </section>
-<section id="html-explained"><div class="tag">Session 3</div><h2>HTML explained</h2><p>One file with a comment on every tag.</p><p><a class="b" href="html-explained.zip" download>Download the whole folder (.zip)</a></p>
-<div class="file"><div class="fh"><b>html-explained.html</b><span><button class="b cp">Copy code</button><a class="b alt" href="html-explained/html-explained.html" download="html-explained.html">Download</a><a class="b alt" href="html-explained/html-explained.html" target="_blank">See the result</a></span></div><pre>&lt;!DOCTYPE html&gt;
+<section id="html-explained"><div class="tag">Session 3</div><h2>HTML explained</h2><p>One file with a comment on every tag.</p>
+<div class="file"><div class="fh"><b>html-explained.html</b><span><button class="b cp">Copy code</button><button class="b alt dl" data-n="html-explained.html">Download</button></span></div><pre>&lt;!DOCTYPE html&gt;
 &lt;!-- 1. Tells the browser: &quot;this file is HTML5&quot;. Always the first line. --&gt;
 
 &lt;html lang=&quot;en&quot;&gt;
@@ -414,8 +414,8 @@ button {                            /* style the &lt;button&gt; */
 &lt;/html&gt;
 </pre></div>
 </section>
-<section id="portfolio-template"><div class="tag">Session 3</div><h2>Portfolio template</h2><p>Fill in every CHANGE ME, save, and watch the page.</p><p><a class="b" href="portfolio-template.zip" download>Download the whole folder (.zip)</a></p>
-<div class="file"><div class="fh"><b>index.html</b><span><button class="b cp">Copy code</button><a class="b alt" href="portfolio-template/index.html" download="index.html">Download</a><a class="b alt" href="portfolio-template/index.html" target="_blank">See the result</a></span></div><pre>&lt;!DOCTYPE html&gt;
+<section id="portfolio-template"><div class="tag">Session 3</div><h2>Portfolio template</h2><p>Fill in every CHANGE ME, save, and watch the page.</p>
+<div class="file"><div class="fh"><b>index.html</b><span><button class="b cp">Copy code</button><button class="b alt dl" data-n="index.html">Download</button></span></div><pre>&lt;!DOCTYPE html&gt;
 &lt;!-- PORTFOLIO TEMPLATE
      1. Find every &quot;CHANGE ME&quot; and replace it with your own words.
      2. Save (Ctrl+S / Cmd+S) and look at the page in Live Server.
@@ -493,8 +493,8 @@ button {                            /* style the &lt;button&gt; */
 &lt;/html&gt;
 </pre></div>
 </section>
-<section id="css-starter"><div class="tag">Session 4</div><h2>CSS starter</h2><p>The profile page and a commented style.css. Keep both files in the same folder.</p><p><a class="b" href="css-starter.zip" download>Download the whole folder (.zip)</a></p>
-<div class="file"><div class="fh"><b>index.html</b><span><button class="b cp">Copy code</button><a class="b alt" href="css-starter/index.html" download="index.html">Download</a><a class="b alt" href="css-starter/index.html" target="_blank">See the result</a></span></div><pre>&lt;!DOCTYPE html&gt;
+<section id="css-starter"><div class="tag">Session 4</div><h2>CSS starter</h2><p>The profile page and a commented style.css. Keep both files in the same folder.</p>
+<div class="file"><div class="fh"><b>index.html</b><span><button class="b cp">Copy code</button><button class="b alt dl" data-n="index.html">Download</button></span></div><pre>&lt;!DOCTYPE html&gt;
 &lt;!-- CSS STARTER: this is the Session 3 portfolio template, now linked to style.css.
      If you already have your own index.html, just add the &lt;link&gt; line to YOUR &lt;head&gt;. --&gt;
 &lt;html lang=&quot;en&quot;&gt;
@@ -552,7 +552,7 @@ button {                            /* style the &lt;button&gt; */
 &lt;/body&gt;
 &lt;/html&gt;
 </pre></div>
-<div class="file"><div class="fh"><b>style.css</b><span><button class="b cp">Copy code</button><a class="b alt" href="css-starter/style.css" download="style.css">Download</a></span></div><pre>/* STYLE TEMPLATE
+<div class="file"><div class="fh"><b>style.css</b><span><button class="b cp">Copy code</button><button class="b alt dl" data-n="style.css">Download</button></span></div><pre>/* STYLE TEMPLATE
    How to use it: change a value, save (Ctrl+S / Cmd+S), and watch the page.
    Each rule looks like:  selector { property: value; }          */
 
@@ -626,8 +626,8 @@ input[type=&quot;submit&quot;] {
 /* 7. Your turn! Add your own rules below. */
 </pre></div>
 </section>
-<section id="day4-activity"><div class="tag">Session 4</div><h2>Activity: 2 pages + CSS</h2><p>Change the HTML (CHANGE ME), then change the colors and sizes in style.css. All three files go in the same folder.</p><p><a class="b" href="day4-activity.zip" download>Download the whole folder (.zip)</a></p>
-<div class="file"><div class="fh"><b>index.html</b><span><button class="b cp">Copy code</button><a class="b alt" href="day4-activity/index.html" download="index.html">Download</a><a class="b alt" href="day4-activity/index.html" target="_blank">See the result</a></span></div><pre>&lt;!DOCTYPE html&gt;
+<section id="day4-activity"><div class="tag">Session 4</div><h2>Activity: 2 pages + CSS</h2><p>Change the HTML (CHANGE ME), then change the colors and sizes in style.css. All three files go in the same folder.</p>
+<div class="file"><div class="fh"><b>index.html</b><span><button class="b cp">Copy code</button><button class="b alt dl" data-n="index.html">Download</button></span></div><pre>&lt;!DOCTYPE html&gt;
 &lt;!-- DAY 4 ACTIVITY: Home page
      PART 1 (HTML): replace every &quot;CHANGE ME&quot; with your own words, then save.
      PART 2 (CSS):  open style.css and change the colors, sizes, and fonts.
@@ -690,7 +690,7 @@ input[type=&quot;submit&quot;] {
 &lt;/body&gt;
 &lt;/html&gt;
 </pre></div>
-<div class="file"><div class="fh"><b>about.html</b><span><button class="b cp">Copy code</button><a class="b alt" href="day4-activity/about.html" download="about.html">Download</a><a class="b alt" href="day4-activity/about.html" target="_blank">See the result</a></span></div><pre>&lt;!DOCTYPE html&gt;
+<div class="file"><div class="fh"><b>about.html</b><span><button class="b cp">Copy code</button><button class="b alt dl" data-n="about.html">Download</button></span></div><pre>&lt;!DOCTYPE html&gt;
 &lt;!-- DAY 4 ACTIVITY: About page
      Replace every &quot;CHANGE ME&quot; with your own words, then save.
      It uses the same style.css as index.html. --&gt;
@@ -747,7 +747,7 @@ input[type=&quot;submit&quot;] {
 &lt;/body&gt;
 &lt;/html&gt;
 </pre></div>
-<div class="file"><div class="fh"><b>style.css</b><span><button class="b cp">Copy code</button><a class="b alt" href="day4-activity/style.css" download="style.css">Download</a></span></div><pre>/* DAY 4 ACTIVITY: style.css
+<div class="file"><div class="fh"><b>style.css</b><span><button class="b cp">Copy code</button><button class="b alt dl" data-n="style.css">Download</button></span></div><pre>/* DAY 4 ACTIVITY: style.css
    HOW TO PLAY: change a value, save (Ctrl+S / Cmd+S), and look at BOTH pages.
    Every rule looks like:   selector { property: value; }
    Look for &quot;CHANGE ME&quot; comments for ideas. */
@@ -866,6 +866,9 @@ document.querySelectorAll('.cp').forEach(function(b){b.onclick=function(){
  var pre=b.closest('.file').querySelector('pre'),t=pre.textContent;
  function sel(){var r=document.createRange();r.selectNodeContents(pre);var s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Selected: press Ctrl+C'}
  try{navigator.clipboard.writeText(t).then(function(){b.textContent='Copied!';setTimeout(function(){b.textContent='Copy code'},1800)},sel)}catch(e){sel()}}});
+document.querySelectorAll('.dl').forEach(function(b){b.onclick=function(){
+ var t=b.closest('.file').querySelector('pre').textContent,a=document.createElement('a');
+ a.href=URL.createObjectURL(new Blob([t],{type:'text/plain'}));a.download=b.dataset.n;document.body.appendChild(a);a.click();a.remove();}});
 </script>
 </body>
 </html>
