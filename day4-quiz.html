@@ -51,9 +51,7 @@ pre{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding
    ===================================================================== */
 const TOPICS=[
  {id:'sel',name:'Selectors',desc:'Tag, class, id, groups, and which rule wins',slide:'Slide 7'},
- {id:'unit',name:'Units: px, % and rem',desc:'How CSS measures size',slide:'Slides 10-12'},
- {id:'prop',name:'Common properties',desc:'color, font-size, margin, padding, border…',slide:'Slide 13'},
- {id:'idea',name:'Property ideas',desc:'border-radius, box-shadow, :hover, flex…',slide:'Slide 19'}
+ {id:'prop',name:'Common properties',desc:'color, font-size, margin, padding, border…',slide:'Slide 13'}
 ];
 const Q={
 sel:[
@@ -66,16 +64,6 @@ sel:[
 {q:'This h1 has a class. Which color will it be?',code:'.special { color: crimson; }\nh1 { color: blue; }\n\n<h1 class="special">Hi</h1>',o:['Crimson','Blue','Both mixed','Black'],a:0,e:'A class is more specific than a tag selector, so the class wins even though the h1 rule comes later.'},
 {q:'Which statement about class and id is true?',o:['An id should be used on only one element; a class can be shared','A class can be used on only one element','An id can be shared by many elements','They are exactly the same'],a:0,e:'A class is like a name tag many elements can wear. An id is unique: one element only.'}
 ],
-unit:[
-{q:'What does px stand for?',o:['Pixels','Points per x','Percent x','Page index'],a:0,e:'px means pixels: the tiny dots that make up your screen.'},
-{q:'Which text is bigger?',o:['font-size: 40px','font-size: 16px','They are the same','font-size: 12px'],a:0,e:'A bigger number means bigger text, so 40px is the largest here.'},
-{q:'A parent box is 300px wide. The child has width: 50%. How wide is the child?',code:'.parent { width: 300px; }\n.child  { width: 50%; }',o:['50px','150px','300px','500px'],a:1,e:'% is a part of the PARENT: half of 300px is 150px.'},
-{q:'The parent box gets smaller. What happens to a child with width: 50%?',o:['It gets smaller too','It stays the same','It disappears','It gets bigger'],a:0,e:'% follows the parent’s size, so the child shrinks too. A px box would stay the same.'},
-{q:'By default, how many pixels is 1rem?',o:['16px','1px','100px','10px'],a:0,e:'The browser’s default base size is 16px, so 1rem = 16px.'},
-{q:'How many pixels is 2rem with the default base size?',o:['32px','2px','12px','20px'],a:0,e:'2 x 16px = 32px.'},
-{q:'rem is based on the font-size of which element?',o:['The html element (the root)','The p element','The closest parent','The img element'],a:0,e:'rem means “root em”: a multiple of the font-size set on the html element.'},
-{q:'You set html { font-size: 24px; }. What happens to text with font-size: 1rem and text with font-size: 16px?',o:['The rem text becomes 24px, the px text stays 16px','Both become 24px','Both stay the same','The rem text stays 16px, the px text becomes 24px'],a:0,e:'rem follows the base size, but px is fixed.'}
-],
 prop:[
 {q:'Which property changes the color of text?',o:['color','text-color','font-color','background'],a:0,e:'color changes the text color.'},
 {q:'Which property changes the size of text?',o:['font-size','text-size','font-style','size'],a:0,e:'font-size sets the size of the text, for example 18px.'},
@@ -87,17 +75,6 @@ prop:[
 {q:'Why do we add a backup font like sans-serif?',code:'font-family: Arial, sans-serif;',o:['It is used if Arial is not available','It makes the text bold','It makes the text smaller','It is needed to link the CSS file'],a:0,e:'The browser tries the fonts in order. The last one is a safe backup.'},
 {q:'Which is a valid hex color?',o:['#3556c9','3556c9#','hex(3556c9)','#35 56 c9'],a:0,e:'A hex color starts with a hash followed by six characters.'},
 {q:'Which CSS makes a box 200px wide and 80px tall?',o:['width: 200px; height: 80px;','size: 200px 80px;','w: 200; h: 80;','width: 80px; height: 200px;'],a:0,e:'width and height set the size of a box.'}
-],
-idea:[
-{q:'What does border-radius: 16px do?',o:['Rounds the corners of a box','Makes the border 16px thick','Moves the box 16px','Makes the text 16px'],a:0,e:'border-radius rounds the corners.'},
-{q:'What does box-shadow add?',code:'box-shadow: 0 4px 12px rgba(0,0,0,0.25);',o:['A soft shadow around the box','A colored background','A thicker border','Extra space inside the box'],a:0,e:'box-shadow makes the box look lifted off the page.'},
-{q:'What does line-height: 1.8 change?',o:['The space between lines of text','The height of the whole page','The size of the letters','The height of an image'],a:0,e:'A bigger line-height makes long text easier to read.'},
-{q:'What does text-transform: uppercase do?',o:['Shows the letters as capitals without retyping','Makes the text bigger','Makes the text bold','Moves the text up'],a:0,e:'text-transform changes the letter case: uppercase, lowercase, or capitalize.'},
-{q:'When does this rule apply?',code:'button:hover {\n  background-color: #1d3a9e;\n}',o:['Only while the mouse is over the button','When the button is clicked','Always','When the page loads'],a:0,e:':hover applies only while the mouse pointer is over the element.'},
-{q:'What does display: flex do to the children of .row?',code:'.row {\n  display: flex;\n}',o:['Puts them side by side in a row','Hides them','Makes them smaller','Puts them in a circle'],a:0,e:'display: flex lines the children up in a row. We study layouts next session.'},
-{q:'Which property adds space between the letters?',o:['letter-spacing','line-height','text-align','margin'],a:0,e:'letter-spacing: 1px adds a little space between letters.'},
-{q:'In a flex row, which property adds space between the boxes?',code:'.row {\n  display: flex;\n  gap: 10px;\n}',o:['gap','border','color','height'],a:0,e:'gap puts equal space between the flex items.'},
-{q:'Which rule makes a button darker only when the mouse is on it?',o:['button:hover { }','button.hover { }','#hover { }','button:click { }'],a:0,e:'A colon followed by hover is the :hover rule.'}
 ]};
 
 const app=document.getElementById('app');
