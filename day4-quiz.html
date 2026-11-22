@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Day 4 CSS Quiz Game</title>
+<style>
+:root{--bg:#f4f5f7;--card:#fff;--tx:#1c2230;--mu:#5b6475;--ac:#3556c9;--soft:#e8edfb;--bd:#d9dde5;--ok:#0a7a3d;--okbg:#e3f6ea;--no:#b42318;--nobg:#fdeceb}
+@media (prefers-color-scheme:dark){:root{--bg:#14171f;--card:#1d212c;--tx:#e8eaf0;--mu:#9aa3b5;--ac:#7b97f0;--soft:#232a40;--bd:#2e3442;--ok:#5fd68a;--okbg:#143324;--no:#ff8a80;--nobg:#3a1c1a}}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--tx);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100vh;padding:4vh 16px}
+main{max-width:760px;margin:auto}
+.tag{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--ac);font-weight:700}
+h1{font-size:clamp(28px,5vw,44px);margin:.2em 0 .2em}
+h2{font-size:clamp(20px,3.4vw,28px);line-height:1.3;margin:.3em 0 .6em}
+p{color:var(--mu);line-height:1.5}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:22px}
+.topic{text-align:left;background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:18px;cursor:pointer;color:var(--tx);font:inherit}
+.topic:hover,.topic:focus-visible{border-color:var(--ac)}
+.topic b{display:block;font-size:13px;color:var(--ac);text-transform:uppercase;letter-spacing:.08em}
+.topic h3{margin:.3em 0;font-size:19px}
+.topic span{display:block;margin-top:.6em;font-size:13px;color:var(--mu)}
+.bar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;font-size:15px;color:var(--mu);margin-bottom:10px}
+.bar b{color:var(--tx)}
+.prog{height:6px;background:var(--bd);border-radius:3px;overflow:hidden;margin-bottom:22px}.prog div{height:100%;background:var(--ac);transition:width .3s}
+pre{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:14px;font-size:15px;line-height:1.5;overflow:auto;margin:0 0 16px;color:var(--tx)}
+.opts{display:grid;gap:10px}
+.opt{display:flex;gap:12px;align-items:center;text-align:left;background:var(--card);border:2px solid var(--bd);border-radius:10px;padding:12px 14px;font:inherit;font-size:17px;color:var(--tx);cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--ac)}
+.opt i{font-style:normal;font-weight:700;min-width:28px;height:28px;border-radius:7px;background:var(--soft);color:var(--ac);display:flex;align-items:center;justify-content:center;font-size:14px}
+.opt.good{border-color:var(--ok);background:var(--okbg)}.opt.bad{border-color:var(--no);background:var(--nobg)}
+.opt:disabled{cursor:default}
+.fb{margin-top:16px;padding:14px;border-radius:10px;border:1px solid var(--bd);background:var(--card)}
+.fb strong{display:block;margin-bottom:4px}.fb.good strong{color:var(--ok)}.fb.bad strong{color:var(--no)}
+.btn{margin-top:16px;background:var(--ac);color:#fff;border:0;border-radius:10px;padding:12px 22px;font:inherit;font-size:16px;cursor:pointer}
+.btn.alt{background:var(--card);color:var(--ac);border:2px solid var(--ac);margin-left:10px}
+.big{font-size:clamp(48px,12vw,84px);font-weight:800;color:var(--ac);line-height:1}
+.rev{margin-top:18px;display:grid;gap:10px}.rev div{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:12px}
+.rev small{display:block;color:var(--mu);margin-top:4px}
+</style>
+</head>
+<body>
+<main id="app"></main>
+<script>
+/* =====================================================================
+   DAY 4 QUIZ GAME
+   To add a question: copy one { ... } block inside a topic and edit it.
+     q = the question   code = optional code to show   o = the 4 options
+     a = the number of the correct option (0 = first, 1 = second ...)
+     e = the explanation shown after answering
+   ===================================================================== */
+const TOPICS=[
+ {id:'sel',name:'Selectors',desc:'Tag, class, id, groups, and which rule wins',slide:'Slide 7'},
+ {id:'unit',name:'Units: px, % and rem',desc:'How CSS measures size',slide:'Slides 10-12'},
+ {id:'prop',name:'Common properties',desc:'color, font-size, margin, padding, border…',slide:'Slide 13'},
+ {id:'idea',name:'Property ideas',desc:'border-radius, box-shadow, :hover, flex…',slide:'Slide 19'}
+];
+const Q={
+sel:[
+{q:'This CSS is linked to a page with three h1 headings. How many headings turn blue?',code:'h1 {\n  color: blue;\n}',o:['Only the first h1','All three h1 headings','None of them','Only the last h1'],a:1,e:'The selector h1 means “every h1 on the page”, so all three are styled at once.'},
+{q:'You want to style only ONE of the three h1 headings. What is the best way?',o:['Give that h1 a class and style the class','Write the h1 rule three times','Change the h1 to a p tag','Delete the other two h1 headings'],a:0,e:'Add class="special" to that heading in the HTML, then write .special { } in the CSS.'},
+{q:'Which CSS selector finds this element?',code:'<p class="note">Hello</p>',o:['.note','#note','note','<note>'],a:0,e:'A class is selected with a dot: .note'},
+{q:'Which CSS selector finds this element?',code:'<p id="intro">Hello</p>',o:['.intro','#intro','intro','@intro'],a:1,e:'An id is selected with a hash: #intro'},
+{q:'What does this rule style?',code:'h1, h2 {\n  color: red;\n}',o:['Only h1','Only h2','Both h1 and h2','Every tag on the page'],a:2,e:'The comma groups selectors, so one rule styles several tags.'},
+{q:'Two rules clash. Which color will the h1 be?',code:'h1 { color: blue; }\nh1 { color: red; }',o:['Blue','Red','Purple','No color'],a:1,e:'When rules clash, the one written later wins. That is the “cascading” in CSS.'},
+{q:'This h1 has a class. Which color will it be?',code:'.special { color: crimson; }\nh1 { color: blue; }\n\n<h1 class="special">Hi</h1>',o:['Crimson','Blue','Both mixed','Black'],a:0,e:'A class is more specific than a tag selector, so the class wins even though the h1 rule comes later.'},
+{q:'Which statement about class and id is true?',o:['An id should be used on only one element; a class can be shared','A class can be used on only one element','An id can be shared by many elements','They are exactly the same'],a:0,e:'A class is like a name tag many elements can wear. An id is unique: one element only.'}
+],
+unit:[
+{q:'What does px stand for?',o:['Pixels','Points per x','Percent x','Page index'],a:0,e:'px means pixels: the tiny dots that make up your screen.'},
+{q:'Which text is bigger?',o:['font-size: 40px','font-size: 16px','They are the same','font-size: 12px'],a:0,e:'A bigger number means bigger text, so 40px is the largest here.'},
+{q:'A parent box is 300px wide. The child has width: 50%. How wide is the child?',code:'.parent { width: 300px; }\n.child  { width: 50%; }',o:['50px','150px','300px','500px'],a:1,e:'% is a part of the PARENT: half of 300px is 150px.'},
+{q:'The parent box gets smaller. What happens to a child with width: 50%?',o:['It gets smaller too','It stays the same','It disappears','It gets bigger'],a:0,e:'% follows the parent’s size, so the child shrinks too. A px box would stay the same.'},
+{q:'By default, how many pixels is 1rem?',o:['16px','1px','100px','10px'],a:0,e:'The browser’s default base size is 16px, so 1rem = 16px.'},
+{q:'How many pixels is 2rem with the default base size?',o:['32px','2px','12px','20px'],a:0,e:'2 x 16px = 32px.'},
+{q:'rem is based on the font-size of which element?',o:['The html element (the root)','The p element','The closest parent','The img element'],a:0,e:'rem means “root em”: a multiple of the font-size set on the html element.'},
+{q:'You set html { font-size: 24px; }. What happens to text with font-size: 1rem and text with font-size: 16px?',o:['The rem text becomes 24px, the px text stays 16px','Both become 24px','Both stay the same','The rem text stays 16px, the px text becomes 24px'],a:0,e:'rem follows the base size, but px is fixed.'}
+],
+prop:[
+{q:'Which property changes the color of text?',o:['color','text-color','font-color','background'],a:0,e:'color changes the text color.'},
+{q:'Which property changes the size of text?',o:['font-size','text-size','font-style','size'],a:0,e:'font-size sets the size of the text, for example 18px.'},
+{q:'What does text-align: center do?',o:['Centers the text inside its box','Centers the whole page','Makes the text bigger','Makes the text bold'],a:0,e:'text-align controls how text lines up inside its box: left, center, or right.'},
+{q:'Which property fills the background of an element with a color?',o:['background-color','color','border-color','fill'],a:0,e:'background-color fills the element’s background. color is for the text.'},
+{q:'Which property adds space INSIDE a box, around the content?',o:['padding','margin','border','gap'],a:0,e:'padding is the space inside the box. margin is the space outside.'},
+{q:'Which property adds space OUTSIDE a box, between it and its neighbors?',o:['margin','padding','width','border'],a:0,e:'margin is the space outside the box.'},
+{q:'What does this rule do?',code:'.box {\n  border: 3px solid #3556c9;\n}',o:['Draws a 3px solid blue line around the box','Makes the box 3px wide','Adds 3px of padding','Colors the text blue'],a:0,e:'border takes a thickness, a style, and a color.'},
+{q:'Why do we add a backup font like sans-serif?',code:'font-family: Arial, sans-serif;',o:['It is used if Arial is not available','It makes the text bold','It makes the text smaller','It is needed to link the CSS file'],a:0,e:'The browser tries the fonts in order. The last one is a safe backup.'},
+{q:'Which is a valid hex color?',o:['#3556c9','3556c9#','hex(3556c9)','#35 56 c9'],a:0,e:'A hex color starts with a hash followed by six characters.'},
+{q:'Which CSS makes a box 200px wide and 80px tall?',o:['width: 200px; height: 80px;','size: 200px 80px;','w: 200; h: 80;','width: 80px; height: 200px;'],a:0,e:'width and height set the size of a box.'}
+],
+idea:[
+{q:'What does border-radius: 16px do?',o:['Rounds the corners of a box','Makes the border 16px thick','Moves the box 16px','Makes the text 16px'],a:0,e:'border-radius rounds the corners.'},
+{q:'What does box-shadow add?',code:'box-shadow: 0 4px 12px rgba(0,0,0,0.25);',o:['A soft shadow around the box','A colored background','A thicker border','Extra space inside the box'],a:0,e:'box-shadow makes the box look lifted off the page.'},
+{q:'What does line-height: 1.8 change?',o:['The space between lines of text','The height of the whole page','The size of the letters','The height of an image'],a:0,e:'A bigger line-height makes long text easier to read.'},
+{q:'What does text-transform: uppercase do?',o:['Shows the letters as capitals without retyping','Makes the text bigger','Makes the text bold','Moves the text up'],a:0,e:'text-transform changes the letter case: uppercase, lowercase, or capitalize.'},
+{q:'When does this rule apply?',code:'button:hover {\n  background-color: #1d3a9e;\n}',o:['Only while the mouse is over the button','When the button is clicked','Always','When the page loads'],a:0,e:':hover applies only while the mouse pointer is over the element.'},
+{q:'What does display: flex do to the children of .row?',code:'.row {\n  display: flex;\n}',o:['Puts them side by side in a row','Hides them','Makes them smaller','Puts them in a circle'],a:0,e:'display: flex lines the children up in a row. We study layouts next session.'},
+{q:'Which property adds space between the letters?',o:['letter-spacing','line-height','text-align','margin'],a:0,e:'letter-spacing: 1px adds a little space between letters.'},
+{q:'In a flex row, which property adds space between the boxes?',code:'.row {\n  display: flex;\n  gap: 10px;\n}',o:['gap','border','color','height'],a:0,e:'gap puts equal space between the flex items.'},
+{q:'Which rule makes a button darker only when the mouse is on it?',o:['button:hover { }','button.hover { }','#hover { }','button:click { }'],a:0,e:'A colon followed by hover is the :hover rule.'}
+]};
+
+const app=document.getElementById('app');
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const el=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.textContent=h;return e};
+const best=(id)=>{try{return +localStorage.getItem('d4best_'+id)||0}catch(e){return 0}};
+const saveBest=(id,s)=>{try{if(s>best(id))localStorage.setItem('d4best_'+id,s)}catch(e){}};
+let G=null;
+
+function home(){
+  G=null;app.innerHTML='';
+  app.append(el('div','tag','Day 4 · CSS'),el('h1','','CSS Quiz Game'),el('p','','Pick a topic, click the right answer, and collect points. 10 points for each correct answer, plus 5 bonus points for every answer in a streak of 3 or more.'));
+  const g=el('div','grid');
+  TOPICS.forEach(t=>{const b=el('button','topic');b.append(el('b','',t.slide),el('h3','',t.name),el('p','',t.desc),el('span','','Best score: '+best(t.id)));b.onclick=()=>start(t.id);g.append(b)});
+  const m=el('button','topic');m.append(el('b','','All topics'),el('h3','','Mix: surprise me'),el('p','','10 random questions from everything.'),el('span','','Best score: '+best('mix')));m.onclick=()=>start('mix');g.append(m);
+  app.append(g);
+}
+function start(id){
+  let list;
+  if(id==='mix')list=shuffle([].concat(...Object.values(Q))).slice(0,10);
+  else list=shuffle(Q[id]).slice(0,8);
+  G={id,list:list.map(q=>({...q,opts:shuffle(q.o.map((t,i)=>({t,c:i===q.a})))})),i:0,score:0,streak:0,right:0,missed:[]};
+  ask();
+}
+function ask(){
+  const q=G.list[G.i];app.innerHTML='';
+  const bar=el('div','bar');bar.innerHTML='<span>Question <b>'+(G.i+1)+'</b> of <b>'+G.list.length+'</b></span><span>Score: <b>'+G.score+'</b></span><span>Streak: <b>'+G.streak+'</b></span>';
+  const p=el('div','prog');const pi=el('div');pi.style.width=(G.i/G.list.length*100)+'%';p.append(pi);
+  app.append(bar,p,el('h2','',q.q));
+  if(q.code){const pr=el('pre');pr.textContent=q.code;app.append(pr)}
+  const box=el('div','opts');const fb=el('div');
+  q.opts.forEach((o,k)=>{const b=el('button','opt');const l=el('i','','ABCD'[k]);b.append(l,document.createTextNode(o.t));b.onclick=()=>pick(b,o,box,fb,q);box.append(b)});
+  app.append(box,fb);
+  G.locked=false;
+}
+function pick(btn,o,box,fb,q){
+  if(G.locked)return;G.locked=true;
+  [...box.children].forEach((b,k)=>{b.disabled=true;if(q.opts[k].c)b.classList.add('good')});
+  fb.className='fb '+(o.c?'good':'bad');
+  if(o.c){G.right++;G.streak++;G.score+=10+(G.streak>=3?5:0)}else{btn.classList.add('bad');G.streak=0;G.missed.push({q:q.q,code:q.code,right:q.opts.find(x=>x.c).t,e:q.e})}
+  const s=el('strong','',o.c?'Correct!'+(G.streak>=3?' Streak bonus +5':''):'Not quite');fb.append(s,document.createTextNode(q.e));
+  const last=G.i===G.list.length-1;
+  const nb=el('button','btn',last?'See my results':'Next question');nb.onclick=()=>{if(last)end();else{G.i++;ask()}};
+  app.append(nb);nb.focus();
+  const bar=app.querySelector('.bar');bar.innerHTML='<span>Question <b>'+(G.i+1)+'</b> of <b>'+G.list.length+'</b></span><span>Score: <b>'+G.score+'</b></span><span>Streak: <b>'+G.streak+'</b></span>';
+}
+function end(){
+  const n=G.list.length,pct=Math.round(G.right/n*100);saveBest(G.id,G.score);
+  const msg=pct>=90?'Excellent! You really know your CSS.':pct>=70?'Good job! Review the missed questions below.':pct>=50?'Keep practicing: look at the slides and try again.':'Review the slides, then try again. You can do it!';
+  app.innerHTML='';
+  app.append(el('div','tag','Results'),el('div','big',String(G.score)),el('h2','',G.right+' of '+n+' correct ('+pct+'%)'),el('p','',msg),el('p','','Best score for this topic: '+best(G.id)));
+  const a=el('button','btn','Play again');a.onclick=()=>start(G.id);const h=el('button','btn alt','Choose another topic');h.onclick=home;
+  const w=el('div');w.append(a,h);app.append(w);
+  if(G.missed.length){app.append(el('h2','','Questions to review'));const r=el('div','rev');
+    G.missed.forEach(m=>{const d=el('div');d.append(el('b','',m.q));if(m.code){const pr=el('pre');pr.style.marginTop='8px';pr.textContent=m.code;d.append(pr)}d.append(el('small','','Correct answer: '+m.right),el('small','',m.e));r.append(d)});app.append(r)}
+}
+document.addEventListener('keydown',e=>{
+  if(!G)return;const k='1234'.indexOf(e.key);
+  if(k>-1&&!G.locked){const b=app.querySelectorAll('.opt')[k];if(b)b.click()}
+});
+home();
+</script>
+</body>
+</html>

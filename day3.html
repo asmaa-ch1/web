@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Web Development Workshop – Day 3: HTML5 Web Profile</title>
+<style>
+:root{--bg:#f4f5f7;--card:#fff;--tx:#1c2230;--mu:#5b6475;--ac:#3556c9;--soft:#e8edfb;--bd:#d9dde5;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14171f;--card:#1d212c;--tx:#e8eaf0;--mu:#9aa3b5;--ac:#7b97f0;--soft:#232a40;--bd:#2e3442}}
+:root[data-theme="dark"]{--bg:#14171f;--card:#1d212c;--tx:#e8eaf0;--mu:#9aa3b5;--ac:#7b97f0;--soft:#232a40;--bd:#2e3442}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%;background:var(--bg);color:var(--tx);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;overflow:hidden}
+.sl{position:absolute;inset:0 0 44px;padding:4vh 6vw;display:none;flex-direction:column;justify-content:center;gap:2vh;overflow-y:auto}
+.sl.on{display:flex}
+h1{font-size:clamp(34px,6vw,72px);line-height:1.08;color:var(--tx)}
+h2{font-size:clamp(24px,3.6vw,44px);line-height:1.12;padding-bottom:1.2vh;border-bottom:2px solid var(--bd)}
+h3{font-size:clamp(15px,1.8vw,22px);margin:.2em 0}
+p,li{font-size:clamp(13px,1.55vw,20px);line-height:1.45;color:var(--mu)}
+.tag{font-size:clamp(11px,1.2vw,14px);letter-spacing:.12em;text-transform:uppercase;color:var(--ac);font-weight:700}
+.g{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.4vw}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:3vw;align-items:center}
+@media (max-width:800px){.row{grid-template-columns:1fr}}
+.c{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:1.3vw}
+.c.cur{border:2px solid var(--ac)}
+.ib{width:clamp(34px,3.6vw,48px);height:clamp(34px,3.6vw,48px);border-radius:10px;background:var(--soft);color:var(--ac);display:flex;align-items:center;justify-content:center;margin-bottom:.6vh}
+.ic{width:60%;height:60%;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ib .ic{width:58%;height:58%}
+.n{font-size:clamp(20px,2.6vw,34px);font-weight:700;color:var(--ac)}
+ul{padding-left:1.2em;display:grid;gap:.5vh}
+.lv{font-size:clamp(12px,1.3vw,17px);color:var(--mu);border-left:3px solid var(--ac);padding-left:1vw}.lv b{color:var(--tx)}
+.fl{display:flex;align-items:stretch;gap:.8vw}.fl>.c{flex:1}.fl>.ic{width:2.4vw;min-width:22px;align-self:center;color:var(--ac)}
+.q{cursor:pointer}.q .a{display:none;color:var(--ac);font-weight:600;margin-top:.6em;font-size:clamp(13px,1.5vw,19px)}.q.open .a{display:block}.q .h{font-size:12px;color:var(--mu)}
+.ctr{text-align:center}.ctr .n{display:block;font-size:clamp(28px,3.6vw,46px);margin-bottom:.3vh}
+.flip{perspective:1000px;height:clamp(170px,26vh,230px)}.fi{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}.flip.open .fi{transform:rotateY(180deg)}.ff,.fb{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;flex-direction:column;justify-content:center;align-items:center}.fb{transform:rotateY(180deg);background:var(--ac);border-color:var(--ac)}.fb h3,.fb p{color:#fff}
+.fn{font-size:clamp(11px,1.15vw,14px)}
+svg.fig{width:100%;height:auto;max-height:46vh;display:block}
+.fig text{font-family:inherit;fill:var(--tx);font-size:13px}.fig .m{fill:var(--mu);font-size:11px}
+.fig .b{fill:var(--card);stroke:var(--bd);stroke-width:1.5}.fig .s{fill:var(--soft);stroke:var(--ac);stroke-width:1.3}.fig .a{fill:var(--ac)}.fig .l{stroke:var(--ac);stroke-width:2;fill:none}.fig .g1{fill:var(--bd)}
+.fig .mt{fill:#fff;font-size:11px;font-weight:700}
+.tb{display:flex;gap:8px;flex-wrap:wrap}.tb button{border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:8px;padding:6px 14px;cursor:pointer;font-size:clamp(12px,1.4vw,18px)}.tb button.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+pre{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:1.2vw;font-size:clamp(10px,1.2vw,15px);color:var(--tx);overflow:auto;max-height:46vh;line-height:1.4}iframe{width:100%;height:42vh;border:1px solid var(--bd);border-radius:10px;background:#fff}
+.st{padding-left:1.2em;display:grid;gap:.5vh}.st li{font-size:clamp(12px,1.3vw,17px)}
+.tbb{border:1px solid var(--ac);background:var(--card);color:var(--ac);border-radius:8px;padding:6px 14px;cursor:pointer;font-size:clamp(12px,1.4vw,18px);align-self:flex-start}
+.ans{color:var(--ac);font-weight:600}.cmp pre{min-height:17vh;max-height:17vh;font-size:clamp(9px,1.05vw,13px);margin-bottom:1vh}.cmp iframe{height:19vh}.vw{display:flex;flex-direction:column;gap:1.2vh}
+#bar{position:fixed;left:0;right:0;bottom:0;height:44px;display:flex;align-items:center;gap:12px;padding:0 14px;background:var(--card);border-top:1px solid var(--bd);z-index:5}
+#bar button{border:0;background:var(--ac);color:#fff;width:34px;height:30px;border-radius:8px;font-size:18px;cursor:pointer}
+#bar button.s{background:transparent;color:var(--mu);width:auto;font-size:13px;padding:0 6px}
+#pr{flex:1;height:5px;background:var(--bd);border-radius:3px;overflow:hidden}#pf{height:100%;width:0;background:var(--ac)}
+#ct{font-size:13px;color:var(--mu);min-width:52px;text-align:center}
+#nt{position:fixed;left:2vw;right:2vw;bottom:54px;background:var(--card);border:1px solid var(--ac);border-radius:10px;padding:12px 16px;display:none;z-index:6;max-height:28vh;overflow:auto}
+#nt.on{display:block}#nt p{font-size:15px;color:var(--tx)}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#3556c9"/></marker>
+<symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/></symbol>
+<symbol id="i-tool" viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5 5L3 18l3 3 6.7-6.7a4 4 0 0 0 5-5l-2.5 2.5-2.4-.6-.6-2.4z"/></symbol>
+<symbol id="i-book" viewBox="0 0 24 24"><path d="M4 4h12a3 3 0 0 1 3 3v13H7a3 3 0 0 1-3-3zM4 17a3 3 0 0 1 3-3h12"/></symbol>
+<symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></symbol>
+<symbol id="i-trend" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"/></symbol>
+<symbol id="i-dollar" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M14.5 9a2.5 2 0 0 0-2.5-1.5c-1.4 0-2.5.8-2.5 2s1.1 1.7 2.5 2 2.5.8 2.5 2-1.1 2-2.5 2A2.5 2 0 0 1 9.5 15M12 6v2M12 16v2"/></symbol>
+<symbol id="i-laptop" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="11" rx="1"/><path d="M2 20h20"/></symbol>
+<symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5zM3 13l9 5 9-5"/></symbol>
+<symbol id="i-monitor" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></symbol>
+<symbol id="i-server" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="7" rx="1"/><rect x="3" y="13" width="18" height="7" rx="1"/><path d="M7 7.5h.01M7 16.5h.01"/></symbol>
+<symbol id="i-file" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6zM14 3v4h4M9 13h6M9 17h6"/></symbol>
+<symbol id="i-layout" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11"/></symbol>
+<symbol id="i-palette" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18c1.5 0 2-1 1.5-2s0-2 1.5-2h2a3 3 0 0 0 3-3 9 9 0 0 0-8-11z"/><path d="M8 11h.01M12 7.5h.01M16 11h.01"/></symbol>
+<symbol id="i-zap" viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></symbol>
+<symbol id="i-code" viewBox="0 0 24 24"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></symbol>
+<symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></symbol>
+<symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-9 9"/></symbol>
+<symbol id="i-cart" viewBox="0 0 24 24"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.5 12h11l2-8H6"/></symbol>
+<symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+<symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5L13.5 13.5 8.5 15.5 10.5 10.5z"/></symbol>
+<symbol id="i-play" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9l5 3-5 3z"/></symbol>
+<symbol id="i-bot" viewBox="0 0 24 24"><rect x="4" y="8" width="16" height="12" rx="3"/><path d="M12 8V4M9 14h.01M15 14h.01M2 13v3M22 13v3"/></symbol>
+<symbol id="i-rocket" viewBox="0 0 24 24"><path d="M14 4c4 0 6 2 6 6-2 4-5 7-8 8l-4-4c1-3 4-8 6-10zM9 14l-4 4M8 19l-3 0M5 16l0 3"/></symbol>
+<symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0M16 5a3 3 0 0 1 0 6M18 14a6 6 0 0 1 3 6"/></symbol>
+<symbol id="i-pen" viewBox="0 0 24 24"><path d="M4 20l4-1 11-11-3-3L5 16zM14 6l3 3"/></symbol>
+<symbol id="i-utensils" viewBox="0 0 24 24"><path d="M6 3v8a2 2 0 0 0 2 2v8M10 3v8M6 7h4M17 3c-2 2-3 5-3 8h3v10"/></symbol>
+<symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+<symbol id="i-cursor" viewBox="0 0 24 24"><path d="M5 3l14 7-6 2-2 6z"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></symbol>
+</defs></svg>
+<div id="deck"></div>
+<div id="nt"><p id="ntx"></p></div>
+<div id="bar"><button id="pv" aria-label="Previous">←</button><button id="nx" aria-label="Next">→</button><div id="pr"><div id="pf"></div></div><span id="ct"></span><button class="s" id="nb">Notes (N)</button><button class="s" id="fs">Fullscreen (F)</button></div>
+<script>
+const S=[];const s=(b,n)=>S.push({b,n:n||''});
+const ic=n=>`<svg class="ic"><use href="#i-${n}"/></svg>`;
+const ib=n=>`<div class="ib">${ic(n)}</div>`;
+const cards=a=>`<div class="g">${a.map(([h,p,i])=>`<div class="c">${ib(i)}<h3>${h}</h3><p>${p}</p></div>`).join('')}</div>`;
+const lv=(b,a)=>`<div class="lv"><b>Beginner:</b> ${b} &nbsp; <b>Going further:</b> ${a}</div>`;
+const T=(t,x)=>`<div class="tag">${t}</div><h2>${x}</h2>`;
+const row=(l,r)=>`<div class="row"><div>${l}</div><div>${r}</div></div>`;
+const fig=(v,b)=>`<svg class="fig" viewBox="${v}">${b}</svg>`;
+const ico=(n,x,y,w)=>`<use href="#i-${n}" x="${x}" y="${y}" width="${w}" height="${w}" class="ic" style="fill:none;stroke:var(--ac);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round"/>`;
+const mk=(x,y,n)=>`<circle cx="${x}" cy="${y}" r="9" class="a"/><text x="${x}" y="${y+4}" text-anchor="middle" class="mt">${n}</text>`;
+
+/* reusable figures */
+const anat=fig('0 0 320 230',`<rect class="b" x="2" y="2" width="316" height="226" rx="8"/><rect class="s" x="12" y="12" width="296" height="32" rx="4"/><text x="24" y="33">Header</text><text class="m" x="250" y="33">logo · title</text><rect class="s" x="12" y="50" width="296" height="22" rx="4"/><text x="24" y="66">Navigation (nav)</text><rect class="s" x="12" y="78" width="296" height="104" rx="4"/><text x="24" y="98">Main content</text><rect class="g1" x="24" y="108" width="170" height="8" rx="3"/><rect class="g1" x="24" y="124" width="140" height="8" rx="3"/><rect class="g1" x="24" y="140" width="160" height="8" rx="3"/><rect class="b" x="212" y="104" width="86" height="64" rx="4"/><rect class="s" x="12" y="188" width="296" height="30" rx="4"/><text x="24" y="208">Footer</text><text class="m" x="212" y="208">© · contact · links</text>`);
+const shop=fig('0 0 360 250',`<rect class="b" x="2" y="2" width="356" height="246" rx="8"/><rect class="g1" x="12" y="12" width="50" height="24" rx="4"/><rect class="b" x="74" y="12" width="150" height="24" rx="12"/>${ico('search',200,16,16)}<rect class="b" x="234" y="12" width="52" height="24" rx="4"/><text x="244" y="29" class="m">Login</text><rect class="b" x="294" y="12" width="52" height="24" rx="4"/>${ico('cart',308,15,18)}<rect class="s" x="12" y="44" width="334" height="20" rx="4"/><text x="22" y="58" class="m">Menu · Categories · Deals</text><rect class="b" x="12" y="72" width="334" height="62" rx="4"/>${ico('image',166,84,36)}${[0,1,2].map(i=>`<rect class="b" x="${12+i*113}" y="142" width="108" height="96" rx="4"/><rect class="g1" x="${20+i*113}" y="150" width="92" height="44" rx="3"/><rect class="g1" x="${20+i*113}" y="202" width="60" height="7" rx="3"/><rect class="s" x="${20+i*113}" y="216" width="40" height="14" rx="3"/>`).join('')}${mk(20,58,1)}${mk(190,40,2)}${mk(30,126,3)}${mk(330,200,4)}${mk(256,8,5)}${mk(338,8,6)}`);
+const tri=fig('0 0 450 150',[['HTML','structure',0,0],['+ CSS','style',1,1],['+ JavaScript','behavior',2,2]].map(([a,b,k,l])=>{const x=k*150+5;return `<rect class="b" x="${x}" y="4" width="130" height="100" rx="6"/>`+(l?`<rect class="a" x="${x+8}" y="12" width="114" height="16" rx="3"/><rect class="s" x="${x+8}" y="34" width="50" height="40" rx="3"/>`:`<rect x="${x+8}" y="12" width="114" height="16" rx="3" fill="none" stroke="var(--mu)" stroke-dasharray="3 2"/><rect x="${x+8}" y="34" width="50" height="40" rx="3" fill="none" stroke="var(--mu)" stroke-dasharray="3 2"/>`)+`<rect class="g1" x="${x+66}" y="38" width="54" height="6" rx="3"/><rect class="g1" x="${x+66}" y="50" width="44" height="6" rx="3"/>`+(l==2?`<rect class="a" x="${x+66}" y="64" width="46" height="16" rx="8"/>${ico('cursor',x+100,70,18)}`:'')+`<text x="${x+65}" y="126" text-anchor="middle" style="font-weight:700">${a}</text><text class="m" x="${x+65}" y="142" text-anchor="middle">${b}</text>`}).join(''));
+const jour=fig('0 0 560 190',`<rect class="s" x="10" y="30" width="140" height="100" rx="10"/>${ico('monitor',60,44,40)}<text x="80" y="112" text-anchor="middle" style="font-weight:700">Browser</text><rect class="s" x="410" y="30" width="140" height="100" rx="10"/>${ico('server',460,44,40)}<text x="480" y="112" text-anchor="middle" style="font-weight:700">Server</text><path class="l" d="M155 64H402" marker-end="url(#ah)"/><text x="278" y="55" text-anchor="middle">① Request: the URL</text><path class="l" d="M405 100H158" marker-end="url(#ah)"/><text x="278" y="124" text-anchor="middle">② Response: HTML, CSS, JS</text><text class="m" x="80" y="156" text-anchor="middle">③ Renders the page</text><text class="m" x="480" y="156" text-anchor="middle">Stores the files</text>`);
+const range=fig('0 0 560 150',`<line x1="30" y1="70" x2="530" y2="70" stroke="var(--bd)" stroke-width="8" stroke-linecap="round"/><line x1="64" y1="70" x2="500" y2="70" stroke="var(--ac)" stroke-opacity=".35" stroke-width="8" stroke-linecap="round"/><circle cx="64" cy="70" r="7" class="a"/><circle cx="223" cy="70" r="11" class="a"/><circle cx="500" cy="70" r="7" class="a"/><text x="64" y="104" text-anchor="middle" style="font-weight:700">&lt; $49K</text><text class="m" x="64" y="120" text-anchor="middle">lowest 10%</text><text x="223" y="40" text-anchor="middle" style="font-weight:700">~$91K</text><text class="m" x="223" y="104" text-anchor="middle">median</text><text x="500" y="104" text-anchor="middle" style="font-weight:700">&gt; $163K</text><text class="m" x="500" y="120" text-anchor="middle">top 10%</text>`);
+const insp=fig('0 0 380 230',`<rect class="b" x="2" y="2" width="376" height="226" rx="8"/><path d="M2 30h376" stroke="var(--bd)"/><circle cx="16" cy="16" r="4" class="g1"/><circle cx="30" cy="16" r="4" class="g1"/><circle cx="44" cy="16" r="4" class="g1"/><rect class="g1" x="64" y="9" width="180" height="14" rx="7"/><rect class="s" x="12" y="40" width="170" height="26" rx="3"/><rect class="g1" x="12" y="72" width="170" height="14" rx="3"/><rect class="b" x="12" y="92" width="170" height="90" rx="3"/><rect class="s" x="12" y="188" width="170" height="30" rx="3"/><path d="M192 30v198" stroke="var(--bd)"/><text class="m" x="202" y="50">Elements · Styles</text><text x="202" y="76" style="font-family:monospace;font-size:12px">&lt;body&gt;</text><text x="212" y="96" style="font-family:monospace;font-size:12px;font-weight:700">&lt;header&gt;</text><rect x="206" y="82" width="104" height="18" rx="3" fill="var(--ac)" fill-opacity=".18"/><text x="212" y="116" style="font-family:monospace;font-size:12px">&lt;nav&gt;</text><text x="212" y="136" style="font-family:monospace;font-size:12px">&lt;main&gt;</text><text x="212" y="156" style="font-family:monospace;font-size:12px">&lt;footer&gt;</text><text class="m" x="202" y="186" style="font-family:monospace">header { color: …; }</text>`);
+const venn=fig('0 0 320 240',`<circle cx="120" cy="90" r="66" class="s" fill-opacity=".5"/><circle cx="200" cy="90" r="66" class="s" fill-opacity=".5"/><circle cx="160" cy="154" r="66" class="s" fill-opacity=".5"/><text x="92" y="82" text-anchor="middle" style="font-weight:700">Content</text><text x="228" y="82" text-anchor="middle" style="font-weight:700">Design</text><text x="160" y="190" text-anchor="middle" style="font-weight:700">Technology</text><text x="160" y="122" text-anchor="middle" class="m">Website</text>`);
+const fb=fig('0 0 420 170',`<rect class="s" x="10" y="20" width="140" height="100" rx="10"/>${ico('monitor',60,34,40)}<text x="80" y="100" text-anchor="middle" style="font-weight:700">Front-end</text><text class="m" x="80" y="114" text-anchor="middle">in the browser</text><rect class="s" x="270" y="20" width="140" height="100" rx="10"/>${ico('server',320,34,40)}<text x="340" y="100" text-anchor="middle" style="font-weight:700">Back-end</text><text class="m" x="340" y="114" text-anchor="middle">on the server</text><path class="l" d="M155 55H262" marker-end="url(#ah)"/><path class="l" d="M265 85H158" marker-end="url(#ah)"/><text class="m" x="210" y="146" text-anchor="middle">requests and data</text>`);
+
+const hero=fig('0 0 360 270',`<rect class="b" x="20" y="8" width="320" height="156" rx="10"/><path d="M20 36h320" stroke="var(--bd)"/><circle cx="38" cy="22" r="4" class="g1"/><circle cx="52" cy="22" r="4" class="g1"/><circle cx="66" cy="22" r="4" class="g1"/>${ico('code',140,52,80)}${[['HTML','structure'],['CSS','style'],['JS','behavior']].map(([a,b],k)=>`<rect class="s" x="${20+k*112}" y="184" width="96" height="70" rx="12"/><text x="${68+k*112}" y="216" text-anchor="middle" style="font-weight:800;font-size:22px">${a}</text><text class="m" x="${68+k*112}" y="238" text-anchor="middle">${b}</text>`).join('')}`);
+const range2=fig('0 0 560 170',`<line x1="30" y1="80" x2="530" y2="80" stroke="var(--bd)" stroke-width="8" stroke-linecap="round"/><line x1="74" y1="80" x2="107" y2="80" stroke="var(--ac)" stroke-width="8" stroke-linecap="round"/><line x1="120" y1="80" x2="488" y2="80" stroke="var(--ac)" stroke-width="3" stroke-dasharray="6 6" marker-end="url(#ah)"/><circle cx="74" cy="80" r="7" class="a"/><circle cx="89" cy="80" r="10" class="a"/><circle cx="107" cy="80" r="7" class="a"/><circle cx="504" cy="80" r="7" class="a"/><text x="89" y="52" text-anchor="middle" style="font-weight:700">~$940</text><text x="60" y="114" style="font-weight:700">Lebanon today</text><text class="m" x="60" y="130">~$700–$1,200 / month</text><text class="m" x="300" y="68" text-anchor="middle">Remote work for clients abroad can reach much higher</text><text x="530" y="114" text-anchor="end" style="font-weight:700">US median</text><text class="m" x="530" y="130" text-anchor="end">~$7.6K / month</text>`);
+/* slides */
+const E=t=>t.replace(/&/g,'&amp;').replace(/</g,'&lt;');
+const pre=t=>`<pre style="max-height:none">${E(t)}</pre>`;
+const act=(t,x)=>`<div class="lv"><b>${t}</b> ${x}</div>`;
+const stack=a=>`<div class="g" style="grid-template-columns:1fr">${a.map(([i,h,p])=>`<div class="c" style="display:flex;gap:1vw;align-items:center">${ib(i)}<div><h3>${h}</h3><p>${p}</p></div></div>`).join('')}</div>`;
+const prof=fig('0 0 360 250',`<rect class="b" x="2" y="2" width="356" height="246" rx="10"/><path d="M2 30h356" stroke="var(--bd)"/><circle cx="16" cy="16" r="4" class="g1"/><circle cx="30" cy="16" r="4" class="g1"/><circle cx="44" cy="16" r="4" class="g1"/><circle cx="180" cy="80" r="30" class="s"/>${ico('users',162,62,36)}<text x="180" y="140" text-anchor="middle" style="font-weight:700;font-size:18px">Your Name</text><rect class="g1" x="80" y="156" width="200" height="8" rx="4"/><rect class="g1" x="100" y="172" width="160" height="8" rx="4"/>`+['Reading','Football','Music'].map((t,i)=>`<rect class="s" x="${70+i*78}" y="196" width="64" height="22" rx="11"/><text class="m" x="${102+i*78}" y="211" text-anchor="middle">${t}</text>`).join(''));
+const c1=`<!DOCTYPE html>
+<html>
+<head>
+  <title>My Web Profile</title>
+</head>
+<body>
+  <!-- Content here -->
+</body>
+</html>`;
+const c2=`<body>
+  <header>
+    <h1>Your Name</h1>
+  </header>
+  <main>
+    <section>
+      <h2>About me</h2>
+      <p>A short bio about me.</p>
+      <img src="photo.jpg" alt="My photo">
+      <a href="https://www.wikipedia.org">My favorite site</a>
+    </section>
+    <section>
+      <h2>My hobbies</h2>
+      <ul>
+        <li>Reading</li>
+        <li>Football</li>
+        <li>Music</li>
+      </ul>
+    </section>
+  </main>
+</body>`;
+const c3=`<form>
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name">
+  <br>
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email">
+  <br>
+  <input type="submit" value="Submit">
+</form>`;
+const d1=`<html>
+ <head><title>Broken Page</head>
+ <body>
+  <h1>My Profile
+  <p>This is my info
+  <img src=missing.jpg>
+ </body>
+</html>`;
+const d2a=`<!DOCTYPE html>
+<html>
+ <head>
+  <title>My Portfolio</title>
+  <link href="styles.css">
+ </head>
+ <body>
+  <header>
+   <h1>Welcome to my site</h2>
+   <nav>
+    <ul>
+     <li><a href="home.html">Home</li>
+     <li><a href="about.html">About</a>
+     <li><a href="contact.html">Contact</li>
+    </ul>
+   </nav>
+  </header>`;
+const d2b=`  <section>
+   <h2>About Me</h2>
+   <p>I love coding and design.</p>
+   <img src=me.jpg alt=My Photo
+        width=300 height=auto>
+  </section>
+
+  <footer>
+   <p>Contact:
+    <a href=mailto:me@example.com>Email Me</p>
+  </footer>
+ </body>
+</html>`;
+const tg=t=>`<span style="font-family:monospace;color:var(--ac)">${E(t)}</span>`;
+
+const vwS=(id,l)=>`<div class="vw" data-id="${id}"><div class="tb">${l.map(x=>`<button>${x}</button>`).join('')}</div><div class="row"><div><div class="tag">Code</div><pre style="max-height:40vh"></pre></div><div><div class="tag">Output</div><iframe sandbox="allow-scripts" title="Output"></iframe></div></div><p class="why"></p></div>`;
+const vwC=(id,l)=>`<div class="vw cmp" data-id="${id}"><div class="tb">${l.map(x=>`<button>${x}</button>`).join('')}</div><div class="row"><div><div class="tag">Without</div><pre></pre><iframe sandbox="allow-scripts" title="Without"></iframe></div><div><div class="tag">With</div><pre></pre><iframe sandbox="allow-scripts" title="With"></iframe></div></div><p class="why" style="color:var(--tx);font-weight:600"></p><button class="tbb rev">Show answer</button><p class="ans"></p></div>`;
+const IMG="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='80'%3E%3Crect width='120' height='80' rx='10' fill='%233556c9'/%3E%3C/svg%3E";
+const VD={
+el:[
+['Headings',`<h1>Main title</h1>
+<h2>Subtitle</h2>
+<h3>Smaller heading</h3>
+<h6>Smallest heading</h6>`,'They organize your page into titles and sections. Use one h1 per page. Search engines and screen readers use headings to understand the page.'],
+['Paragraph',`<p>This is my first paragraph.</p>
+<p>This is a second paragraph. Each p starts on a new line.</p>`,'It holds normal text and adds space between blocks of text.'],
+['Image',`<img src="photo.jpg" alt="A blue rectangle" width="120">`,'It shows pictures. src is the file or link, alt describes the picture for screen readers and for when it fails to load.',`<img src="${IMG}" alt="A blue rectangle" width="120">`],
+['Link',`<a href="https://www.wikipedia.org">Go to Wikipedia</a>`,'It connects pages together. href is the destination, and the text between the tags is what people click. (In this preview the link goes nowhere.)',`<a href="#">Go to Wikipedia</a>`],
+['Lists',`<ul>
+  <li>Reading</li>
+  <li>Football</li>
+</ul>
+
+<ol>
+  <li>Install VS Code</li>
+  <li>Write HTML</li>
+</ol>`,'It groups related items. ul gives bullets (the order does not matter) and ol gives numbers (the order matters).'],
+['div',`<div style="background:#eef2ff; padding:10px;">
+  <h3>A box</h3>
+  <p>A div groups things together.</p>
+</div>`,'It groups elements into one box so you can style or move them together with CSS later. Use a semantic tag instead when one fits. (style is CSS: next session.)'],
+['br / hr',`Line one<br>
+Line two<br>
+<hr>
+After the line`,'br starts a new line inside text, and hr draws a horizontal line to separate sections.']],
+cmp:[
+['Semantic tags',`<div>My Name</div>
+<div>Home | About</div>
+<div>Welcome to my page</div>
+<div>© 2026</div>`,`<header>My Name</header>
+<nav>Home | About</nav>
+<main>Welcome to my page</main>
+<footer>© 2026</footer>`,'They look almost the same on the screen. So why is the right one better?','Semantic tags tell the browser, search engines, and screen readers what each part is (menu, main content, footer). The code is also easier to read.'],
+['Image alt text',`<img src="missing-photo.jpg">`,`<img src="missing-photo.jpg" alt="Me at the beach">`,'The image failed to load. Which page is better for the visitor?','With alt text the visitor still knows what the picture shows, and screen-reader users hear the description.'],
+['Heading hierarchy',`<h4>My Profile</h4>
+<h1>Hobbies</h1>
+<h2>Reading</h2>
+<h1>Contact</h1>`,`<h1>My Profile</h1>
+<h2>Hobbies</h2>
+<h3>Reading</h3>
+<h2>Contact</h2>`,'Which page has a clearer structure?','Headings in a logical order (h1, then h2, then h3) show how the content is organized, which helps readers, screen readers, and search engines.'],
+['Form labels',`Name: <input type="text">
+<br>
+Email: <input type="email">`,`<label for="name">Name:</label>
+<input type="text" id="name">
+<br>
+<label for="email">Email:</label>
+<input type="email" id="email">`,'Click the word Name in each output. What happens?','With a label, clicking the text selects the field, the clickable area is bigger, and screen readers announce the field name.']],
+frm:[
+['Basic form',`<form>
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name">
+  <br>
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email">
+  <br>
+  <input type="submit" value="Submit">
+</form>`,'label names the field, input is the field, and the submit button sends the form. The for value matches the id.'],
+['Input types',`<input type="text" placeholder="Text">
+<br><input type="email" placeholder="Email">
+<br><input type="password" placeholder="Password">
+<br><input type="number" placeholder="Number">
+<br><input type="date">`,'The type changes what the field accepts: email checks for an @, password hides the letters, number accepts digits, and date shows a calendar.'],
+['Radio &amp; checkbox',`<p>Choose one:</p>
+<label><input type="radio" name="level"> Beginner</label>
+<label><input type="radio" name="level"> Advanced</label>
+
+<p>Choose any:</p>
+<label><input type="checkbox"> HTML</label>
+<label><input type="checkbox"> CSS</label>`,'Radio buttons with the same name allow one choice. Checkboxes allow several.'],
+['Textarea &amp; select',`<textarea rows="3" cols="30">Write your message…</textarea>
+<br>
+<select>
+  <option>Beginner</option>
+  <option>Intermediate</option>
+  <option>Advanced</option>
+</select>`,'textarea is for longer text over several lines, and select is a dropdown list.']]};
+
+s(row(`<div class="tag">Day 3 · Session 3</div><h1>Build Your Web Profile<br>with HTML5</h1><h3>Structure · Elements · Forms · Real-World Practice</h3><p>Fridays &amp; Sundays, 12:00–2:00 · Today we write real code</p>`,prof),
+'Welcome back. Quick recap: last time we planned a site with Design Thinking. Today we start writing code in VS Code. Total about 2 hours; the build task is the main part.');
+
+s(T('Download VS Code &amp; install Live Server','Our code editor, and the tool that shows your page live')+`<div class="g" style="grid-template-columns:repeat(3,1fr)"><div class="c">${ib('monitor')}<h3>Windows</h3><ol class="st"><li>Go to <b>code.visualstudio.com</b> → <b>Download for Windows</b> (64-bit User Installer, right for most PCs).</li><li>Run the .exe and accept the license.</li><li>Tick <b>Add to PATH</b> and <b>Open with Code</b>, then Install.</li></ol></div><div class="c">${ib('laptop')}<h3>Mac</h3><ol class="st"><li>Go to <b>code.visualstudio.com</b> → <b>Download for Mac</b> (Universal: Intel and Apple Silicon).</li><li>Open the downloaded .zip.</li><li>Drag <b>Visual Studio Code</b> into <b>Applications</b> and open it.</li></ol></div><div class="c">${ib('rocket')}<h3>Live Server extension</h3><ol class="st"><li>In VS Code, click the <b>Extensions</b> icon on the left (or Ctrl/Cmd+Shift+X).</li><li>Search <b>Live Server</b> (by Ritwick Dey) and click <b>Install</b>.</li><li>Right-click <b>index.html</b> → <b>Open with Live Server</b>.</li></ol></div></div>`+act('No Live Server?','open your folder, right-click index.html → Open With → your browser, and refresh after each save. Live Server refreshes for you.'),
+'About 8 min. Students who did Session 1 already have VS Code; help the others in pairs. Check that everyone can open VS Code and see the Extensions panel. Windows: Settings > System > About shows 64-bit.');
+
+s(T('What is HTML5?','HTML5 is the latest version of HyperText Markup Language')+row(anat,stack([['file','Content structure','HTML gives content its basic structure and meaning: text, images, and other media.'],['layers','The website’s skeleton','The invisible framework that holds every website you use together.']])),
+'5 min. Link to Day 1: skeleton (HTML), clothes (CSS), movement (JS). Today is only the skeleton.');
+
+s(T('Basic HTML page structure','Every HTML document follows this skeleton')+row(pre(c1),stack([['file',tg('<!DOCTYPE html>'),'Declares the document type: this is an HTML5 page.'],['layers',tg('<html>'),'The root: it contains everything else.'],['search',tg('<head>'),'Meta-information, like the <title> on the browser tab.'],['monitor',tg('<body>'),'All the visible content: text, images, and more.']])),
+'10 min with the next slide. Type this live in VS Code. Point out the closing tags and the indentation. Ask: "Which part will show on the page?"');
+
+s(T('Let’s code: setup in VS Code','Four steps')+`<div class="fl">${[['1','Open VS Code','Start Visual Studio Code.'],['2','Create a folder','Name it web-profile.'],['3','Make index.html','Create the file inside the folder.'],['4','Add the skeleton','Type the starter HTML structure.']].map(([n,h,p],i)=>(i?ic('arrow'):'')+`<div class="c" style="text-align:center"><span class="n" style="display:block">${n}</span><h3>${h}</h3><p>${p}</p></div>`).join('')}</div>`+act('Shortcuts:','save often with Ctrl+S (Cmd+S on Mac). In VS Code, type ! then press Tab to get the starter HTML automatically.'),
+'About 10 min. Walk around. Common problem: the file saved as index.html.txt, or opened a single file instead of the folder. Remind them to Open Folder.');
+
+s(T('Main HTML elements to master','The tags you will use most')+`<div class="g">${[['&lt;h1&gt; – &lt;h6&gt;','Headings: titles and subtitles; h1 is the most important.','pen'],['&lt;p&gt;','Paragraph: a block of text.','file'],['&lt;img&gt;','Image. Needs src (the file) and alt (a description).','image'],['&lt;a&gt;','Link to another page. Uses href for the destination.','globe'],['&lt;ul&gt; &lt;ol&gt; &lt;li&gt;','Unordered list, ordered list, and list items.','layers'],['&lt;div&gt;','A generic container for grouping elements.','layout'],['&lt;br&gt; / &lt;hr&gt;','Line break / horizontal line.','compass']].map(([h,p,i])=>`<div class="c">${ib(i)}<h3 style="font-family:monospace">${h}</h3><p>${p}</p></div>`).join('')}</div>`,
+'10 min. Open the html-explained.html file in VS Code and show the tags there. Have students type each one quickly in their index.html.');
+
+s(T('Examples: each element in action','Click a tab to see the code, the output, and why you use it')+vwS('el',['Headings','Paragraph','Image','Link','Lists','div','br / hr']),
+'About 15 min. For each tab: read the code, look at the output, then read why we use it. Ask students to predict the output before you click. Tip: click outside the output box before using the arrow keys to change slides.');
+
+s(T('Semantic HTML','Tags that give meaning to the structure')+row(anat,`<div class="g" style="grid-template-columns:1fr 1fr">${[['Headings','h1 to h6 organize the content hierarchy.'],['Navigation','nav clearly defines navigation links.'],['Sections','section groups related content by theme.'],['Articles','article marks independent, self-contained content.'],['Footers','footer is for the bottom of a page or section.']].map(([h,p])=>`<div class="c"><h3>${h}</h3><p>${p}</p></div>`).join('')}</div>`)+`<p>Semantic tags help developers and screen readers understand each part of the page.</p>`,
+'10 min. Compare a page built only with div tags to one with header, nav, main, footer. Ask: which is easier to read?');
+
+s(T('Accessibility matters','Inclusive HTML works better for everyone')+cards([['Image alt text','Always add alt="description" for screen readers and for when images fail to load.','image'],['Heading hierarchy','Use headings in logical order: h1, then h2, and so on.','layers'],['Form labels','Connect each label to its input for better usability.','pen']])+`<div class="c cur"><h3>Good HTML = readable + accessible + future-proof.</h3></div>`,
+'5 min. Ask who has seen an image that failed to load, and what appeared instead (the alt text).');
+
+s(T('Before &amp; after','Which one is better, and why?')+vwC('cmp',['Semantic tags','Image alt text','Heading hierarchy','Form labels'])+`<p class="fn">Look at both outputs, discuss with a neighbor, then press Show answer.</p>`,
+'About 12 min. Do each tab as a vote: raise hands for left or right, and ask one student to explain. Form labels: ask them to click the word Name in each output. Alt text: the image is missing on purpose, so only the alt text can help.');
+
+s(T('Task: build your portfolio from a template','Fill it in, save, and watch what happens')+`<div class="fl">${[['1','Get the template','I will share the index.html template.'],['2','Open it','Open the folder in VS Code and start Live Server.'],['3','Fill the blanks','Replace every CHANGE ME with your own words.'],['4','Save and look','Ctrl+S, then watch the page update.'],['5','Experiment','Add, delete, or change lines and see what happens.']].map(([n,h,p],i)=>(i?ic('arrow'):'')+`<div class="c" style="text-align:center"><span class="n" style="display:block">${n}</span><h3>${h}</h3><p>${p}</p></div>`).join('')}</div>`+cards([['Your name and bio','h1 and p','pen'],['Image and link','img with alt, and a with href','image'],['Hobbies list','ul with li items','layers']])+lv('fill in all the CHANGE ME spots.','add a new section, an ordered list of goals, or a second link.'),
+'About 25 min. Share the template file (index.html) by USB, drive, or chat. Walk around. The photo will be missing at first: show that the alt text appears and that this is why alt matters. Encourage experiments, because breaking the page and fixing it is how they learn.');
+
+s(T('What can you change in the template?','Each part and what it does')+row(pre(`<header>
+  <h1>CHANGE ME: Your Name</h1>
+</header>
+<main>
+  <section>
+    <h2>About me</h2>
+    <p>CHANGE ME: about you</p>
+    <img src="photo.jpg" alt="CHANGE ME">
+    <a href="https://...">CHANGE ME</a>
+  </section>
+  <section>
+    <h2>My hobbies and skills</h2>
+    <ul>
+      <li>CHANGE ME</li>
+    </ul>
+  </section>
+</main>
+<footer>
+  <p>CHANGE ME: your city</p>
+</footer>`),stack([['pen','Change the words','Text between tags: names, bio, hobbies, link text.'],['image','Change attributes','src for the picture, alt for its description, href for the link.'],['layers','Add or remove','Copy a li to add a hobby. Copy a whole section to add a topic.'],['layout','Reorder','Move a section above another and save to see the page change.']])),
+'Use this slide as a reference while they work. Point to the template file comments: every line is explained. Ask: "Which line makes the picture appear?"');
+
+s(T('Let’s add a basic form','Collect input from visitors')+row(pre(c3),stack([['file',tg('<form>'),'Wraps all the fields of the form.'],['pen',tg('<label for="name">'),'The visible text. The for value matches the input’s id, so clicking the label selects the field.'],['code',tg('<input type="text">'),'The field. type decides what it accepts: text, email, password, number…'],['layers',tg('name="name"'),'The field’s name: the key under which its value is sent.'],['check',tg('<input type="submit">'),'The button that sends the form.']]))+act('Add it:','paste the form into the Contact me section of your template, save, and check it in the browser. It does not send data anywhere yet; that needs a back-end.'),
+'About 10 min. Explain each attribute using the right-hand cards. Key idea: label for and input id must match. Next slide lets them try different field types.');
+
+s(T('Try the form fields','Type in the output and see how each field behaves')+vwS('frm',['Basic form','Input types','Radio &amp; checkbox','Textarea &amp; select']),
+'About 8 min. Let students type in the outputs. Try an email without @ and press Submit: the browser complains. That is the type=email check.');
+
+s(T('Debug this HTML! (1)','Spot the errors in this snippet')+row(pre(d1),`<div class="c">${ib('search')}<h3>Fix it in pairs</h3><p>Find and correct the mistakes. Discuss: what went wrong, and why do these errors matter?</p></div>`),
+'5 min. Answers are on the answers slide. Hint: look at closing tags and quotes.');
+
+s(T('Debug (1): answer key','Five errors, and the fixed code')+row(pre(`<!DOCTYPE html>
+<html>
+ <head><title>Broken Page</title></head>
+ <body>
+  <h1>My Profile</h1>
+  <p>This is my info</p>
+  <img src="missing.jpg" alt="Description">
+ </body>
+</html>`),`<div class="g" style="grid-template-columns:1fr">${[['1','No &lt;!DOCTYPE html&gt; at the top.'],['2','&lt;title&gt; is never closed: it needs &lt;/title&gt; before &lt;/head&gt;.'],['3','&lt;h1&gt; is not closed.'],['4','&lt;p&gt; is not closed.'],['5','&lt;img&gt; src needs quotes and the image needs an alt.']].map(([n,t])=>`<div class="c" style="display:flex;gap:1vw;align-items:center"><span class="n">${n}</span><p>${t}</p></div>`).join('')}</div>`),
+'3 min. Ask pairs to compare their answers with the key. Stress: close every tag, and put attribute values in quotes.');
+
+s(T('Debug this HTML! (2)','Find the 7 errors hiding in this snippet')+row(pre(d2a),pre(d2b))+act('Time:','10 minutes in pairs. Write the number of each error you find.'),
+'10 min. Let pairs compete: first to find all errors wins. Do not reveal answers until time is up.');
+
+s(T('Debug (2): the 7 errors','Wrong → right')+`<div class="g">${[['1 · Missing rel','<link href="styles.css">','<link rel="stylesheet" href="styles.css">'],['2 · Mismatched heading','<h1>Welcome to my site</h2>','<h1>Welcome to my site</h1>'],['3 · Home link not closed','<a href="home.html">Home</li>','<a href="home.html">Home</a></li>'],['4 · About item not closed','<li><a href="about.html">About</a>','<li><a href="about.html">About</a></li>'],['5 · Contact link not closed','<a href="contact.html">Contact</li>','<a href="contact.html">Contact</a></li>'],['6 · Image attributes','<img src=me.jpg alt=My Photo width=300 height=auto>','<img src="me.jpg" alt="My Photo" width="300">'],['7 · Email link','<a href=mailto:me@example.com>Email Me</p>','<a href="mailto:me@example.com">Email Me</a></p>']].map(([h,a,b])=>`<div class="c"><h3>${h}</h3><p style="font-family:monospace;font-size:clamp(10px,1.1vw,14px);color:var(--mu)">✗ ${E(a)}</p><p style="font-family:monospace;font-size:clamp(10px,1.1vw,14px);color:var(--ac)">✓ ${E(b)}</p></div>`).join('')}</div>`,
+'5 min. Go through each error. The image counts as one error with several parts. If your official answer key counts differently, adjust here.');
+
+s(T('Ask AI when stuck','Practice asking smart questions')+cards([['“How do I make an image clickable?”','Get guidance on HTML attributes for links.','image'],['“Why is my tag not working?”','Diagnose common HTML errors and syntax issues.','search'],['“How can I center a div in HTML?”','Discover solutions for layout and positioning.','layout']])+`<div class="c cur"><h3>Better prompt: paste your code and describe what you expected and what you see.</h3><p>AI is a powerful assistant, not a replacement for understanding the fundamentals!</p></div>`,
+'5 min. Show one real example: paste the broken snippet from Debug 1 and ask for an explanation of each error. Ask students to check the answer, not just copy it.');
+
+s(T('Peer review &amp; share','Learn from each other’s code')+cards([['Open a neighbor’s file','Swap computers and open their index.html.','laptop'],['Review together','Does it include all required elements? Is the structure readable?','search'],['Suggest one improvement','Give constructive feedback on one specific enhancement.','users']])+act('Time:','10 minutes. Start with one thing you like, then one idea to improve.'),
+'10 min. Rule: be kind and specific. Pick 2 pages to show on the projector.');
+
+s(T('Wrap-up &amp; what’s next','You now know how to…')+cards([['Structure pages','With HTML: headers, paragraphs, lists, and images.','layout'],['Use semantic tags','To create meaningful, accessible page structures.','layers'],['Build basic forms','With labels and input types.','pen'],['Think like a developer','Approach problems and debug with a front-end mindset.','code']])+`<p><b style="color:var(--tx)">Next session:</b> Add style with CSS! Keep your web-profile folder.</p>`,
+'3 min. Ask students to save the folder (USB or cloud) because next session they will style the same page.');
+
+const D=document.getElementById('deck');let i=0;
+S.forEach(x=>{const e=document.createElement('section');e.className='sl';e.innerHTML=x.b;D.appendChild(e)});
+const el=[...D.children];
+function go(n){i=Math.max(0,Math.min(S.length-1,n));el.forEach((e,k)=>e.classList.toggle('on',k===i));
+document.getElementById('pf').style.width=((i+1)/S.length*100)+'%';document.getElementById('ct').textContent=(i+1)+' / '+S.length;
+document.getElementById('ntx').textContent=S[i].n||'No notes for this slide.'}
+const nx=()=>go(i+1),pv=()=>go(i-1);
+document.getElementById('nx').onclick=nx;document.getElementById('pv').onclick=pv;
+const tn=()=>document.getElementById('nt').classList.toggle('on');
+const tf=()=>{try{document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()}catch(e){}};
+document.getElementById('nb').onclick=tn;document.getElementById('fs').onclick=tf;
+document.querySelectorAll('.q').forEach(q=>q.onclick=()=>q.classList.toggle('open'));
+addEventListener('keydown',e=>{const k=e.key;
+if(k==='ArrowRight'||k===' '||k==='PageDown'){e.preventDefault();nx()}
+else if(k==='ArrowLeft'||k==='PageUp')pv();
+else if(k==='Home')go(0);else if(k==='End')go(S.length-1);
+else if(k==='n'||k==='N')tn();else if(k==='f'||k==='F')tf()});
+const BASE='<style>body{font-family:Arial,sans-serif;padding:10px;font-size:15px;color:#1c2230}</style>';
+const esc=t=>t.replace(/&/g,'&amp;').replace(/</g,'&lt;');
+document.querySelectorAll('.vw').forEach(v=>{const it=VD[v.dataset.id],cmp=v.classList.contains('cmp'),pres=v.querySelectorAll('pre'),ifs=v.querySelectorAll('iframe'),why=v.querySelector('.why'),ans=v.querySelector('.ans'),btns=v.querySelectorAll('.tb button');
+function tab(k){const x=it[k];if(cmp){pres[0].innerHTML=esc(x[1]);pres[1].innerHTML=esc(x[2]);ifs[0].srcdoc=BASE+x[1];ifs[1].srcdoc=BASE+x[2];why.textContent=x[3];ans.textContent=x[4];ans.style.display='none'}else{pres[0].innerHTML=esc(x[1]);ifs[0].srcdoc=BASE+(x[3]||x[1]);why.textContent='Why use it: '+x[2]}btns.forEach((b,j)=>b.classList.toggle('on',j===k))}
+btns.forEach((b,k)=>b.onclick=()=>tab(k));const r=v.querySelector('.rev');if(r)r.onclick=()=>{ans.style.display=ans.style.display==='none'?'block':'none'};tab(0)});
+go(0);
+</script>
+</body>
+</html>

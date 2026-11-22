@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Web Development Workshop – Day 1: The Web &amp; You</title>
+<style>
+:root{--bg:#f4f5f7;--card:#fff;--tx:#1c2230;--mu:#5b6475;--ac:#3556c9;--soft:#e8edfb;--bd:#d9dde5;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14171f;--card:#1d212c;--tx:#e8eaf0;--mu:#9aa3b5;--ac:#7b97f0;--soft:#232a40;--bd:#2e3442}}
+:root[data-theme="dark"]{--bg:#14171f;--card:#1d212c;--tx:#e8eaf0;--mu:#9aa3b5;--ac:#7b97f0;--soft:#232a40;--bd:#2e3442}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%;background:var(--bg);color:var(--tx);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;overflow:hidden}
+.sl{position:absolute;inset:0 0 44px;padding:4vh 6vw;display:none;flex-direction:column;justify-content:center;gap:2vh;overflow-y:auto}
+.sl.on{display:flex}
+h1{font-size:clamp(34px,6vw,72px);line-height:1.08;color:var(--tx)}
+h2{font-size:clamp(24px,3.6vw,44px);line-height:1.12;padding-bottom:1.2vh;border-bottom:2px solid var(--bd)}
+h3{font-size:clamp(15px,1.8vw,22px);margin:.2em 0}
+p,li{font-size:clamp(13px,1.55vw,20px);line-height:1.45;color:var(--mu)}
+.tag{font-size:clamp(11px,1.2vw,14px);letter-spacing:.12em;text-transform:uppercase;color:var(--ac);font-weight:700}
+.g{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.4vw}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:3vw;align-items:center}
+@media (max-width:800px){.row{grid-template-columns:1fr}}
+.c{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:1.3vw}
+.c.cur{border:2px solid var(--ac)}
+.ib{width:clamp(34px,3.6vw,48px);height:clamp(34px,3.6vw,48px);border-radius:10px;background:var(--soft);color:var(--ac);display:flex;align-items:center;justify-content:center;margin-bottom:.6vh}
+.ic{width:60%;height:60%;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ib .ic{width:58%;height:58%}
+.n{font-size:clamp(20px,2.6vw,34px);font-weight:700;color:var(--ac)}
+ul{padding-left:1.2em;display:grid;gap:.5vh}
+.lv{font-size:clamp(12px,1.3vw,17px);color:var(--mu);border-left:3px solid var(--ac);padding-left:1vw}.lv b{color:var(--tx)}
+.fl{display:flex;align-items:stretch;gap:.8vw}.fl>.c{flex:1}.fl>.ic{width:2.4vw;min-width:22px;align-self:center;color:var(--ac)}
+.q{cursor:pointer}.q .a{display:none;color:var(--ac);font-weight:600;margin-top:.6em;font-size:clamp(13px,1.5vw,19px)}.q.open .a{display:block}.q .h{font-size:12px;color:var(--mu)}
+.ctr{text-align:center}.ctr .n{display:block;font-size:clamp(28px,3.6vw,46px);margin-bottom:.3vh}
+.flip{perspective:1000px;height:clamp(170px,26vh,230px)}.fi{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}.flip.open .fi{transform:rotateY(180deg)}.ff,.fb{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;flex-direction:column;justify-content:center;align-items:center}.fb{transform:rotateY(180deg);background:var(--ac);border-color:var(--ac)}.fb h3,.fb p{color:#fff}
+.fn{font-size:clamp(11px,1.15vw,14px)}
+svg.fig{width:100%;height:auto;max-height:46vh;display:block}
+.fig text{font-family:inherit;fill:var(--tx);font-size:13px}.fig .m{fill:var(--mu);font-size:11px}
+.fig .b{fill:var(--card);stroke:var(--bd);stroke-width:1.5}.fig .s{fill:var(--soft);stroke:var(--ac);stroke-width:1.3}.fig .a{fill:var(--ac)}.fig .l{stroke:var(--ac);stroke-width:2;fill:none}.fig .g1{fill:var(--bd)}
+.fig .mt{fill:#fff;font-size:11px;font-weight:700}
+.tb{display:flex;gap:8px;flex-wrap:wrap}.tb button{border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:8px;padding:6px 14px;cursor:pointer;font-size:clamp(12px,1.4vw,18px)}.tb button.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+pre{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:1.2vw;font-size:clamp(10px,1.2vw,15px);color:var(--tx);overflow:auto;max-height:46vh;line-height:1.4}iframe{width:100%;height:42vh;border:1px solid var(--bd);border-radius:10px;background:#fff}
+#bar{position:fixed;left:0;right:0;bottom:0;height:44px;display:flex;align-items:center;gap:12px;padding:0 14px;background:var(--card);border-top:1px solid var(--bd);z-index:5}
+#bar button{border:0;background:var(--ac);color:#fff;width:34px;height:30px;border-radius:8px;font-size:18px;cursor:pointer}
+#bar button.s{background:transparent;color:var(--mu);width:auto;font-size:13px;padding:0 6px}
+#pr{flex:1;height:5px;background:var(--bd);border-radius:3px;overflow:hidden}#pf{height:100%;width:0;background:var(--ac)}
+#ct{font-size:13px;color:var(--mu);min-width:52px;text-align:center}
+#nt{position:fixed;left:2vw;right:2vw;bottom:54px;background:var(--card);border:1px solid var(--ac);border-radius:10px;padding:12px 16px;display:none;z-index:6;max-height:28vh;overflow:auto}
+#nt.on{display:block}#nt p{font-size:15px;color:var(--tx)}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#3556c9"/></marker>
+<symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/></symbol>
+<symbol id="i-tool" viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 0 0-5 5L3 18l3 3 6.7-6.7a4 4 0 0 0 5-5l-2.5 2.5-2.4-.6-.6-2.4z"/></symbol>
+<symbol id="i-book" viewBox="0 0 24 24"><path d="M4 4h12a3 3 0 0 1 3 3v13H7a3 3 0 0 1-3-3zM4 17a3 3 0 0 1 3-3h12"/></symbol>
+<symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></symbol>
+<symbol id="i-trend" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"/></symbol>
+<symbol id="i-dollar" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M14.5 9a2.5 2 0 0 0-2.5-1.5c-1.4 0-2.5.8-2.5 2s1.1 1.7 2.5 2 2.5.8 2.5 2-1.1 2-2.5 2A2.5 2 0 0 1 9.5 15M12 6v2M12 16v2"/></symbol>
+<symbol id="i-laptop" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="11" rx="1"/><path d="M2 20h20"/></symbol>
+<symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5zM3 13l9 5 9-5"/></symbol>
+<symbol id="i-monitor" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></symbol>
+<symbol id="i-server" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="7" rx="1"/><rect x="3" y="13" width="18" height="7" rx="1"/><path d="M7 7.5h.01M7 16.5h.01"/></symbol>
+<symbol id="i-file" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6zM14 3v4h4M9 13h6M9 17h6"/></symbol>
+<symbol id="i-layout" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11"/></symbol>
+<symbol id="i-palette" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18c1.5 0 2-1 1.5-2s0-2 1.5-2h2a3 3 0 0 0 3-3 9 9 0 0 0-8-11z"/><path d="M8 11h.01M12 7.5h.01M16 11h.01"/></symbol>
+<symbol id="i-zap" viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></symbol>
+<symbol id="i-code" viewBox="0 0 24 24"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></symbol>
+<symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></symbol>
+<symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-9 9"/></symbol>
+<symbol id="i-cart" viewBox="0 0 24 24"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.5 12h11l2-8H6"/></symbol>
+<symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+<symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5L13.5 13.5 8.5 15.5 10.5 10.5z"/></symbol>
+<symbol id="i-play" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9l5 3-5 3z"/></symbol>
+<symbol id="i-bot" viewBox="0 0 24 24"><rect x="4" y="8" width="16" height="12" rx="3"/><path d="M12 8V4M9 14h.01M15 14h.01M2 13v3M22 13v3"/></symbol>
+<symbol id="i-rocket" viewBox="0 0 24 24"><path d="M14 4c4 0 6 2 6 6-2 4-5 7-8 8l-4-4c1-3 4-8 6-10zM9 14l-4 4M8 19l-3 0M5 16l0 3"/></symbol>
+<symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0M16 5a3 3 0 0 1 0 6M18 14a6 6 0 0 1 3 6"/></symbol>
+<symbol id="i-pen" viewBox="0 0 24 24"><path d="M4 20l4-1 11-11-3-3L5 16zM14 6l3 3"/></symbol>
+<symbol id="i-utensils" viewBox="0 0 24 24"><path d="M6 3v8a2 2 0 0 0 2 2v8M10 3v8M6 7h4M17 3c-2 2-3 5-3 8h3v10"/></symbol>
+<symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+<symbol id="i-cursor" viewBox="0 0 24 24"><path d="M5 3l14 7-6 2-2 6z"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></symbol>
+</defs></svg>
+<div id="deck"></div>
+<div id="nt"><p id="ntx"></p></div>
+<div id="bar"><button id="pv" aria-label="Previous">←</button><button id="nx" aria-label="Next">→</button><div id="pr"><div id="pf"></div></div><span id="ct"></span><button class="s" id="nb">Notes (N)</button><button class="s" id="fs">Fullscreen (F)</button></div>
+<script>
+const S=[];const s=(b,n)=>S.push({b,n:n||''});
+const ic=n=>`<svg class="ic"><use href="#i-${n}"/></svg>`;
+const ib=n=>`<div class="ib">${ic(n)}</div>`;
+const cards=a=>`<div class="g">${a.map(([h,p,i])=>`<div class="c">${ib(i)}<h3>${h}</h3><p>${p}</p></div>`).join('')}</div>`;
+const lv=(b,a)=>`<div class="lv"><b>Beginner:</b> ${b} &nbsp; <b>Going further:</b> ${a}</div>`;
+const T=(t,x)=>`<div class="tag">${t}</div><h2>${x}</h2>`;
+const row=(l,r)=>`<div class="row"><div>${l}</div><div>${r}</div></div>`;
+const fig=(v,b)=>`<svg class="fig" viewBox="${v}">${b}</svg>`;
+const ico=(n,x,y,w)=>`<use href="#i-${n}" x="${x}" y="${y}" width="${w}" height="${w}" class="ic" style="fill:none;stroke:var(--ac);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round"/>`;
+const mk=(x,y,n)=>`<circle cx="${x}" cy="${y}" r="9" class="a"/><text x="${x}" y="${y+4}" text-anchor="middle" class="mt">${n}</text>`;
+
+/* reusable figures */
+const anat=fig('0 0 320 230',`<rect class="b" x="2" y="2" width="316" height="226" rx="8"/><rect class="s" x="12" y="12" width="296" height="32" rx="4"/><text x="24" y="33">Header</text><text class="m" x="250" y="33">logo · title</text><rect class="s" x="12" y="50" width="296" height="22" rx="4"/><text x="24" y="66">Navigation (nav)</text><rect class="s" x="12" y="78" width="296" height="104" rx="4"/><text x="24" y="98">Main content</text><rect class="g1" x="24" y="108" width="170" height="8" rx="3"/><rect class="g1" x="24" y="124" width="140" height="8" rx="3"/><rect class="g1" x="24" y="140" width="160" height="8" rx="3"/><rect class="b" x="212" y="104" width="86" height="64" rx="4"/><rect class="s" x="12" y="188" width="296" height="30" rx="4"/><text x="24" y="208">Footer</text><text class="m" x="212" y="208">© · contact · links</text>`);
+const shop=fig('0 0 360 250',`<rect class="b" x="2" y="2" width="356" height="246" rx="8"/><rect class="g1" x="12" y="12" width="50" height="24" rx="4"/><rect class="b" x="74" y="12" width="150" height="24" rx="12"/>${ico('search',200,16,16)}<rect class="b" x="234" y="12" width="52" height="24" rx="4"/><text x="244" y="29" class="m">Login</text><rect class="b" x="294" y="12" width="52" height="24" rx="4"/>${ico('cart',308,15,18)}<rect class="s" x="12" y="44" width="334" height="20" rx="4"/><text x="22" y="58" class="m">Menu · Categories · Deals</text><rect class="b" x="12" y="72" width="334" height="62" rx="4"/>${ico('image',166,84,36)}${[0,1,2].map(i=>`<rect class="b" x="${12+i*113}" y="142" width="108" height="96" rx="4"/><rect class="g1" x="${20+i*113}" y="150" width="92" height="44" rx="3"/><rect class="g1" x="${20+i*113}" y="202" width="60" height="7" rx="3"/><rect class="s" x="${20+i*113}" y="216" width="40" height="14" rx="3"/>`).join('')}${mk(20,58,1)}${mk(190,40,2)}${mk(30,126,3)}${mk(330,200,4)}${mk(256,8,5)}${mk(338,8,6)}`);
+const tri=fig('0 0 450 150',[['HTML','structure',0,0],['+ CSS','style',1,1],['+ JavaScript','behavior',2,2]].map(([a,b,k,l])=>{const x=k*150+5;return `<rect class="b" x="${x}" y="4" width="130" height="100" rx="6"/>`+(l?`<rect class="a" x="${x+8}" y="12" width="114" height="16" rx="3"/><rect class="s" x="${x+8}" y="34" width="50" height="40" rx="3"/>`:`<rect x="${x+8}" y="12" width="114" height="16" rx="3" fill="none" stroke="var(--mu)" stroke-dasharray="3 2"/><rect x="${x+8}" y="34" width="50" height="40" rx="3" fill="none" stroke="var(--mu)" stroke-dasharray="3 2"/>`)+`<rect class="g1" x="${x+66}" y="38" width="54" height="6" rx="3"/><rect class="g1" x="${x+66}" y="50" width="44" height="6" rx="3"/>`+(l==2?`<rect class="a" x="${x+66}" y="64" width="46" height="16" rx="8"/>${ico('cursor',x+100,70,18)}`:'')+`<text x="${x+65}" y="126" text-anchor="middle" style="font-weight:700">${a}</text><text class="m" x="${x+65}" y="142" text-anchor="middle">${b}</text>`}).join(''));
+const jour=fig('0 0 560 190',`<rect class="s" x="10" y="30" width="140" height="100" rx="10"/>${ico('monitor',60,44,40)}<text x="80" y="112" text-anchor="middle" style="font-weight:700">Browser</text><rect class="s" x="410" y="30" width="140" height="100" rx="10"/>${ico('server',460,44,40)}<text x="480" y="112" text-anchor="middle" style="font-weight:700">Server</text><path class="l" d="M155 64H402" marker-end="url(#ah)"/><text x="278" y="55" text-anchor="middle">① Request: the URL</text><path class="l" d="M405 100H158" marker-end="url(#ah)"/><text x="278" y="124" text-anchor="middle">② Response: HTML, CSS, JS</text><text class="m" x="80" y="156" text-anchor="middle">③ Renders the page</text><text class="m" x="480" y="156" text-anchor="middle">Stores the files</text>`);
+const range=fig('0 0 560 150',`<line x1="30" y1="70" x2="530" y2="70" stroke="var(--bd)" stroke-width="8" stroke-linecap="round"/><line x1="64" y1="70" x2="500" y2="70" stroke="var(--ac)" stroke-opacity=".35" stroke-width="8" stroke-linecap="round"/><circle cx="64" cy="70" r="7" class="a"/><circle cx="223" cy="70" r="11" class="a"/><circle cx="500" cy="70" r="7" class="a"/><text x="64" y="104" text-anchor="middle" style="font-weight:700">&lt; $49K</text><text class="m" x="64" y="120" text-anchor="middle">lowest 10%</text><text x="223" y="40" text-anchor="middle" style="font-weight:700">~$91K</text><text class="m" x="223" y="104" text-anchor="middle">median</text><text x="500" y="104" text-anchor="middle" style="font-weight:700">&gt; $163K</text><text class="m" x="500" y="120" text-anchor="middle">top 10%</text>`);
+const insp=fig('0 0 380 230',`<rect class="b" x="2" y="2" width="376" height="226" rx="8"/><path d="M2 30h376" stroke="var(--bd)"/><circle cx="16" cy="16" r="4" class="g1"/><circle cx="30" cy="16" r="4" class="g1"/><circle cx="44" cy="16" r="4" class="g1"/><rect class="g1" x="64" y="9" width="180" height="14" rx="7"/><rect class="s" x="12" y="40" width="170" height="26" rx="3"/><rect class="g1" x="12" y="72" width="170" height="14" rx="3"/><rect class="b" x="12" y="92" width="170" height="90" rx="3"/><rect class="s" x="12" y="188" width="170" height="30" rx="3"/><path d="M192 30v198" stroke="var(--bd)"/><text class="m" x="202" y="50">Elements · Styles</text><text x="202" y="76" style="font-family:monospace;font-size:12px">&lt;body&gt;</text><text x="212" y="96" style="font-family:monospace;font-size:12px;font-weight:700">&lt;header&gt;</text><rect x="206" y="82" width="104" height="18" rx="3" fill="var(--ac)" fill-opacity=".18"/><text x="212" y="116" style="font-family:monospace;font-size:12px">&lt;nav&gt;</text><text x="212" y="136" style="font-family:monospace;font-size:12px">&lt;main&gt;</text><text x="212" y="156" style="font-family:monospace;font-size:12px">&lt;footer&gt;</text><text class="m" x="202" y="186" style="font-family:monospace">header { color: …; }</text>`);
+const venn=fig('0 0 320 240',`<circle cx="120" cy="90" r="66" class="s" fill-opacity=".5"/><circle cx="200" cy="90" r="66" class="s" fill-opacity=".5"/><circle cx="160" cy="154" r="66" class="s" fill-opacity=".5"/><text x="92" y="82" text-anchor="middle" style="font-weight:700">Content</text><text x="228" y="82" text-anchor="middle" style="font-weight:700">Design</text><text x="160" y="190" text-anchor="middle" style="font-weight:700">Technology</text><text x="160" y="122" text-anchor="middle" class="m">Website</text>`);
+const fb=fig('0 0 420 170',`<rect class="s" x="10" y="20" width="140" height="100" rx="10"/>${ico('monitor',60,34,40)}<text x="80" y="100" text-anchor="middle" style="font-weight:700">Front-end</text><text class="m" x="80" y="114" text-anchor="middle">in the browser</text><rect class="s" x="270" y="20" width="140" height="100" rx="10"/>${ico('server',320,34,40)}<text x="340" y="100" text-anchor="middle" style="font-weight:700">Back-end</text><text class="m" x="340" y="114" text-anchor="middle">on the server</text><path class="l" d="M155 55H262" marker-end="url(#ah)"/><path class="l" d="M265 85H158" marker-end="url(#ah)"/><text class="m" x="210" y="146" text-anchor="middle">requests and data</text>`);
+
+const hero=fig('0 0 360 270',`<rect class="b" x="20" y="8" width="320" height="156" rx="10"/><path d="M20 36h320" stroke="var(--bd)"/><circle cx="38" cy="22" r="4" class="g1"/><circle cx="52" cy="22" r="4" class="g1"/><circle cx="66" cy="22" r="4" class="g1"/>${ico('code',140,52,80)}${[['HTML','structure'],['CSS','style'],['JS','behavior']].map(([a,b],k)=>`<rect class="s" x="${20+k*112}" y="184" width="96" height="70" rx="12"/><text x="${68+k*112}" y="216" text-anchor="middle" style="font-weight:800;font-size:22px">${a}</text><text class="m" x="${68+k*112}" y="238" text-anchor="middle">${b}</text>`).join('')}`);
+const range2=fig('0 0 560 170',`<line x1="30" y1="80" x2="530" y2="80" stroke="var(--bd)" stroke-width="8" stroke-linecap="round"/><line x1="74" y1="80" x2="107" y2="80" stroke="var(--ac)" stroke-width="8" stroke-linecap="round"/><line x1="120" y1="80" x2="488" y2="80" stroke="var(--ac)" stroke-width="3" stroke-dasharray="6 6" marker-end="url(#ah)"/><circle cx="74" cy="80" r="7" class="a"/><circle cx="89" cy="80" r="10" class="a"/><circle cx="107" cy="80" r="7" class="a"/><circle cx="504" cy="80" r="7" class="a"/><text x="89" y="52" text-anchor="middle" style="font-weight:700">~$940</text><text x="60" y="114" style="font-weight:700">Lebanon today</text><text class="m" x="60" y="130">~$700–$1,200 / month</text><text class="m" x="300" y="68" text-anchor="middle">Remote work for clients abroad can reach much higher</text><text x="530" y="114" text-anchor="end" style="font-weight:700">US median</text><text class="m" x="530" y="130" text-anchor="end">~$7.6K / month</text>`);
+/* slides */
+s(`<div style="position:absolute;inset:0;opacity:.2;pointer-events:none;overflow:hidden"><svg viewBox="0 0 1000 560" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%">${[['HTML',70,60],['CSS',880,70],['JS',60,450],['HTML',870,440],['CSS',40,250],['JS',890,250]].map(([t,x,y])=>`<rect x="${x}" y="${y}" width="70" height="46" rx="10" fill="var(--soft)" stroke="var(--ac)" stroke-width="1.5"/><text x="${x+35}" y="${y+29}" text-anchor="middle" font-size="17" font-weight="800" fill="var(--ac)">${t}</text>`).join('')}${[['code',300,50],['palette',650,55],['zap',320,470],['globe',640,465],['layout',170,150],['code',790,150],['monitor',170,360],['layers',790,360]].map(([n,x,y])=>ico(n,x,y,44)).join('')}</svg></div><div style="position:relative;text-align:center"><div class="tag">Day 1 · Session 1</div><h1>Web Development<br>Workshop</h1><h3>Foundation of the Modern Web</h3><p>The Web &amp; You · Fridays &amp; Sundays, 12:00–2:00 · 30 hours</p></div>`,
+'Welcome everyone. Introduce yourself and the schedule (Fri + Sun, 12–2). Say the class is mixed level on purpose: everyone starts from the same foundation.');
+
+s(T('Where this course can take you','Three ways to use your new skills')+cards([
+['Get a job','Junior front-end developer, web designer, agency intern, or support role in a tech team. Your portfolio matters most.','briefcase'],
+['Freelance: build sites for others','Local shops, restaurants, clinics, and clubs need websites. Start with friends, then charge. Find clients on Upwork, Fiverr, or locally.','tool'],
+['Keep learning','HTML and CSS are the base for JavaScript, React, back-end, and UI/UX design.','book']])+
+`<div class="fl">${[['users','Profile page','Introduce yourself: who you are and what you do.'],['layers','Web clone','Rebuild a real site to practice layout and styling.'],['rocket','Final project','A complete website for a real idea or client.'],['globe','Live portfolio','All published on GitHub Pages with one link.']].map(([i,h,p],k)=>(k?ic('arrow'):'')+`<div class="c ctr ${k==3?'cur':''}"><div class="ib" style="margin:0 auto .6vh">${ic(i)}</div><h3>${h}</h3><p>${p}</p></div>`).join('')}</div><p class="fn">What you build here becomes your portfolio.</p>`,
+'Ask who wants a job, who wants freelance clients, who wants their own idea. All are valid. The live projects are what they can show people.');
+
+s(T('Why web developers earn good money','Demand + skills + flexibility')+row(range2+`<p class="fn">Monthly pay, before tax. Lebanon figures are rough estimates (World Bank/ILO-based, 2026); US figure from BLS. Pay differs by country, employer, and skills, and nothing is guaranteed.</p>`,
+`<div class="g" style="grid-template-columns:1fr">${[['globe','Pay differs by country','Local pay in Lebanon is lower than in the US or Europe, but the same skills can be sold to clients abroad.'],['laptop','Freelance &amp; remote','Work for international clients and earn in dollars: your income can reach international levels.'],['layers','Skills stack up','HTML/CSS → JavaScript → frameworks → back-end. Each step raises your value.']].map(([i,h,p])=>`<div class="c" style="display:flex;gap:1vw;align-items:center">${ib(i)}<div><h3>${h}</h3><p>${p}</p></div></div>`).join('')}</div>`),
+'Be honest: Lebanon numbers are rough estimates (about $700–$1,200 per month locally); the US median is shown only for comparison. The message: pay depends on the country, but remote and freelance work can reach international levels.');
+
+s(T('What you’ll learn','10 modules, step by step')+`<div class="g" style="grid-template-columns:repeat(5,1fr)">${['The Web &amp; You','Design Thinking','HTML','CSS','Layout &amp; UI/UX','Bootstrap','Web Clone','GitHub Pages','Final Project','Presentation'].map((x,i)=>`<div class="c ${i?'':'cur'}"><span class="n">${i+1}</span><h3>${x}</h3>${i?'':'<p>Today</p>'}</div>`).join('')}</div>`,
+'Today is module 1. Quick tour of the road ahead, ending with a final project they present.');
+
+s(T('Today’s objectives','By the end of this session, you will…')+`<div class="g">${[['globe','Explain what happens when you open a website'],['layers','Tell front-end from back-end'],['file','Name the 4 parts of a page'],['layout','Recognize header, nav, main, footer'],['search','Use the Inspect tool on any site']].map(([i,t])=>`<div class="c">${ib(i)}<h3>${t}</h3></div>`).join('')}</div>`);
+
+s(T('Icebreaker: Human BINGO','Find someone for each box. First to 5 in a row shouts BINGO!')+cards([
+['Used YouTube today','Find someone who watched a video today.','play'],['Knows 3 browsers','Someone who can name three (Chrome, Firefox, Safari…).','globe'],['Built a website before','Someone who built or helped on a website.','code']])+`<p>Walk around, talk to people, and write their names in the boxes · 10 minutes.</p>`,
+'Also a way to spot who has experience; they can become peer mentors later.');
+
+s(T('Tools you’ll work with','Industry-standard and mostly free')+cards([
+['VS Code','Write and debug your code.','code'],['ChatGPT','AI helper for snippets and explanations.','bot'],['Bootstrap &amp; Flexbox','Responsive layouts.','layout'],['GitHub Pages','Publish your site live.','rocket'],['Figma &amp; Canva','Mockups and visuals.','pen']]));
+
+s(T('Let’s set up VS Code','Download the right version for your computer')+`<div class="g">${[['monitor','Windows',['Go to code.visualstudio.com and click Download for Windows.','Pick “User Installer x64”: right for most PCs. Choose Arm64 only if Settings › System › About says ARM.','Run it and tick “Add to PATH” and “Open with Code”.']],['laptop','Mac',['Go to code.visualstudio.com and click Download for Mac.','Pick “Universal”: it works on both Intel and Apple chips.','Unzip it, drag Visual Studio Code into Applications, then open it.']]].map(([i,h,l])=>`<div class="c">${ib(i)}<h3>${h}</h3><ul>${l.map(x=>`<li>${x}</li>`).join('')}</ul></div>`).join('')}</div>`+lv('install it and open it.','also install Git, we’ll need it for GitHub later. No laptop? Use vscode.dev in the browser.'),'Walk the room: check each student’s system type (Windows: Settings › System › About; Mac: Apple menu › About This Mac). Help anyone stuck before moving on.');
+
+s(T('Extensions &amp; your first test','Install, then run your first page')+cards([['Live Server','Opens your page in the browser and refreshes when you save. Required.','play'],['Prettier','Formats your code automatically so it stays clean. Recommended.','pen'],['Auto Rename Tag','Renames the closing tag when you edit the opening one. Optional.','code']])+`<p class="fn">Install: click the Extensions icon (Ctrl+Shift+X, or Cmd+Shift+X on Mac), search the name, click Install.</p><div class="fl">${[['1','Create a folder','Make “my-site” and open it with File › Open Folder.'],['2','Add index.html','Click New File and name it index.html.'],['3','Type ! then Tab','VS Code writes the page skeleton for you.'],['4','Go Live','Right-click the file › Open with Live Server.']].map(([n,t,d],i)=>(i?ic('arrow'):'')+`<div class="c ctr"><span class="n">${n}</span><h3>${t}</h3><p>${d}</p></div>`).join('')}</div>`,'Everyone should see a page open in the browser. If Live Server is missing, reinstall it from the Extensions tab.');
+
+s(T('What happens when you open a website?','Brainstorm: what goes on behind the scenes?')+row(venn,`<div class="g" style="grid-template-columns:1fr">${[['file','Content','Text, images, video, audio.'],['palette','Design','Layout, colors, fonts.'],['code','Technology','Code, servers, networks.']].map(([i,h,p])=>`<div class="c" style="display:flex;gap:1vw;align-items:center">${ib(i)}<div><h3>${h}</h3><p>${p}</p></div></div>`).join('')}</div>`),
+'Give 1–2 minutes for answers before revealing the three pillars.');
+
+s(T('Front-end vs Back-end','Two halves of every website')+row(fb,`<div class="g" style="grid-template-columns:1fr 1fr"><div class="c"><h3>Front-end</h3><ul><li>What users see and use</li><li>HTML, CSS, JavaScript</li><li>Layout, colors, buttons</li></ul></div><div class="c"><h3>Back-end</h3><ul><li>Behind the scenes</li><li>Node.js, Python, PHP, databases</li><li>Data, logic, login security</li></ul></div></div>`)+lv('this course is front-end.','decide which half you want to explore later.'));
+
+s(T('What is a web page made of?','Four ingredients')+row(tri,`<div class="g" style="grid-template-columns:1fr 1fr">${[['file','Content','Text, images, video, audio.'],['layout','HTML','Organizes the content.'],['palette','CSS','Colors, fonts, responsive look.'],['zap','JavaScript','Interactive features.']].map(([i,h,p])=>`<div class="c">${ib(i)}<h3>${h}</h3><p>${p}</p></div>`).join('')}</div>`));
+
+const codes=[['HTML only',`<h1>Hello, Lebanon!</h1>
+<p>I’m learning web development.</p>
+<button>Click me</button>`,'HTML = structure only. The content is there, but the browser uses its plain default look and the button does nothing.'],['HTML + CSS',`<style>
+  body { font-family: Arial; text-align: center;
+         background: #eef2ff; }
+  h1 { color: #3556c9; }
+  button { background: #3556c9; color: white;
+           border: 0; padding: 10px 20px;
+           border-radius: 8px; }
+</style>
+
+<h1>Hello, Lebanon!</h1>
+<p>I’m learning web development.</p>
+<button>Click me</button>`,'CSS = style. Same content, now with colors, fonts, and spacing. The button still does nothing.'],['HTML + CSS + JS',`<style>
+  body { font-family: Arial; text-align: center;
+         background: #eef2ff; }
+  h1 { color: #3556c9; }
+  button { background: #3556c9; color: white;
+           border: 0; padding: 10px 20px;
+           border-radius: 8px; }
+</style>
+
+<h1>Hello, Lebanon!</h1>
+<p>I’m learning web development.</p>
+<button onclick="hi()">Click me</button>
+<p id="msg"></p>
+
+<script>
+  function hi() {
+    document.getElementById("msg").textContent =
+      "You clicked it!";
+  }
+<\/script>`,'JavaScript = behavior. Click the button in the preview: the page now reacts.']];
+s(T('HTML vs CSS vs JavaScript','Same page, three layers: click a tab')+`<div class="tb">${codes.map(c=>`<button>${c[0]}</button>`).join('')}</div>`+row(`<pre id="cd"></pre>`,`<iframe id="pv2" sandbox="allow-scripts" title="Preview"></iframe>`)+`<p id="cp"></p>`,
+'Click each tab and ask students what changed. Then click the button in the JS version.');
+
+s(T('How the web works','The journey of a page')+jour+`<div class="fl">${[['1','Type address','You enter a URL or click a link.'],['2','Send request','The browser asks the server for the files.'],['3','Receive code','The server returns HTML, CSS and JavaScript.'],['4','Display page','The browser turns the code into the page you see.']].map(([n,t,d],i)=>(i?ic('arrow'):'')+`<div class="c ctr"><span class="n">${n}</span><h3>${t}</h3><p>${d}</p></div>`).join('')}</div>`,
+'Draw it on the board too: laptop → internet → server and back.');
+
+s(T('A restaurant analogy','Browsing the web is like ordering a meal')+`<div class="fl">${[['users','You','Place the order: type a URL or click a link.'],['monitor','Browser = waiter','Takes your order to the kitchen.'],['server','Server = kitchen','Gathers the ingredients: web files.'],['utensils','Webpage = meal','Served on your screen.']].map(([i,h,p],k)=>(k?ic('arrow'):'')+`<div class="c">${ib(i)}<h3>${h}</h3><p>${p}</p></div>`).join('')}</div>`);
+
+s(T('Key page sections','Almost every site has these')+row(anat,`<div class="g" style="grid-template-columns:1fr">${[['Header','Logo, title, short intro.'],['Navigation','Links between pages or sections.'],['Main content','The primary information.'],['Footer','Copyright, contact, policies.']].map(([h,p])=>`<div class="c"><h3>${h}</h3><p>${p}</p></div>`).join('')}</div>`)+lv('find these four on any site.','spot the tags: header, nav, main, footer.'));
+
+s(T('Live demo: the Inspect tool','Your first step to thinking like a web developer')+row(insp,`<div class="c">${ib('cursor')}<h3>How to open it</h3><p>Right-click any page → <b>Inspect</b>, or press <b>F12</b>.</p></div><br><div class="c"><h3>What you’ll discover</h3><ul><li>The page’s HTML: can you spot a tag?</li><li>The CSS applied to each element</li><li>Bootstrap classes (btn, container)</li></ul></div>`)+lv('hover over elements and watch the page highlight.','edit a text or color live; it resets on refresh.'),
+'Demo live: open a news or shop site, press F12, select an element, change its text or color, and show that only your screen changes.');
+
+s(T('Activity 1: Explore &amp; label a site','In pairs · 15 minutes')+cards([['Choose your site','Any site you like, from a blog to a big store.','globe'],['Inspect &amp; identify','Find the main HTML sections and their CSS.','search'],['Sketch &amp; label','Draw the main elements with their HTML tags.','pen']])+lv('pair up with an experienced classmate.','list the CSS properties used (color, font-size, margin).'));
+
+s(T('Activity 2: Layout sketch','In groups · 12 minutes')+row(anat,`<div class="g" style="grid-template-columns:1fr 1fr">${[['globe','Choose a site','A popular one to analyze.'],['layout','Sketch blocks','Header, nav, content, footer.'],['users','Discuss usability','Easy or hard to use?'],['trend','Propose ideas','How to improve it.']].map(([i,h,p])=>`<div class="c">${ib(i)}<h3>${h}</h3><p>${p}</p></div>`).join('')}</div>`));
+
+s(T('Deep dive: a complex site','Find at least 6 elements on an e-commerce site')+row(shop,`<div class="g" style="grid-template-columns:1fr 1fr">${[['compass','1 Navigation','Menus, categories.'],['search','2 Search bar','Input and button.'],['image','3 Media','Images, carousels.'],['cart','4 Listings','Product cards.'],['lock','5 Login forms','Sign in / register.'],['cart','6 Cart','Checkout.']].map(([i,h,p])=>`<div class="c">${ib(i)}<h3>${h}</h3><p>${p}</p></div>`).join('')}</div>`));
+
+s(T('Quick quiz: what did you learn?','Click a card to flip it')+`<div class="g">${[['What’s a browser? What’s a server?','The browser requests and displays pages; the server stores files and responds.'],['Front-end vs back-end?','Front-end = what users see (HTML, CSS, JS). Back-end = server, data, logic.'],['Where is a site’s footer?','At the very bottom: copyright, contact, policy links.'],['Which 3 languages build the front-end?','HTML (structure), CSS (style), JavaScript (behavior).']].map(([q,a],i)=>`<div class="flip q"><div class="fi"><div class="ff c ctr"><span class="n">${i+1}</span><h3>${q}</h3><p class="h">Click to flip</p></div><div class="fb c ctr"><h3>Answer</h3><p>${a}</p></div></div></div>`).join('')}</div>`);
+
+s(T('If you were a website…','What kind would you be?')+row(`<p>A vibrant social hub, a minimalist blog, or an intricate e-commerce store?</p><p>Think about your homepage, your key features, and the message you’d convey.</p>`,anat));
+
+s(T('Wrap-up &amp; what’s next','Today you learned')+cards([['How a page travels','From server to browser and back.','globe'],['Front-end vs back-end','And the 4 ingredients of a page.','layers'],['How to inspect','Any website, with F12.','search']])+`<p><b style="color:var(--tx)">Next session:</b> Design Thinking for the Web: choose a real problem and sketch a solution.</p>`);
+
+const D=document.getElementById('deck');let i=0;
+S.forEach(x=>{const e=document.createElement('section');e.className='sl';e.innerHTML=x.b;D.appendChild(e)});
+const el=[...D.children];
+function go(n){i=Math.max(0,Math.min(S.length-1,n));el.forEach((e,k)=>e.classList.toggle('on',k===i));
+document.getElementById('pf').style.width=((i+1)/S.length*100)+'%';document.getElementById('ct').textContent=(i+1)+' / '+S.length;
+document.getElementById('ntx').textContent=S[i].n||'No notes for this slide.'}
+const nx=()=>go(i+1),pv=()=>go(i-1);
+document.getElementById('nx').onclick=nx;document.getElementById('pv').onclick=pv;
+const tn=()=>document.getElementById('nt').classList.toggle('on');
+const tf=()=>{try{document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()}catch(e){}};
+document.getElementById('nb').onclick=tn;document.getElementById('fs').onclick=tf;
+document.querySelectorAll('.q').forEach(q=>q.onclick=()=>q.classList.toggle('open'));
+addEventListener('keydown',e=>{const k=e.key;
+if(k==='ArrowRight'||k===' '||k==='PageDown'){e.preventDefault();nx()}
+else if(k==='ArrowLeft'||k==='PageUp')pv();
+else if(k==='Home')go(0);else if(k==='End')go(S.length-1);
+else if(k==='n'||k==='N')tn();else if(k==='f'||k==='F')tf()});
+const esc=t=>t.replace(/&/g,'&amp;').replace(/</g,'&lt;');
+function tab(k){document.getElementById('cd').innerHTML=esc(codes[k][1]);document.getElementById('pv2').srcdoc=codes[k][1];document.getElementById('cp').textContent=codes[k][2];document.querySelectorAll('.tb button').forEach((b,j)=>b.classList.toggle('on',j===k))}
+document.querySelectorAll('.tb button').forEach((b,k)=>b.onclick=()=>tab(k));tab(0);
+go(0);
+</script>
+</body>
+</html>
