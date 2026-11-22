@@ -1,0 +1,38 @@
+/* HOW CSS IS READ:
+   selector { property: value; }
+   selector = WHAT to style     property = WHICH thing to change     value = HOW */
+
+body {                              /* style the whole page body */
+  font-family: Arial, sans-serif;   /* font used for all text (sans-serif = fallback) */
+  background: #eef2ff;              /* page background color (light blue) */
+  color: #1c2230;                   /* default text color (dark) */
+  text-align: center;               /* center all the text */
+  padding: 40px;                    /* space between the page edge and the content */
+}
+
+h1 {                                /* style only the <h1> heading */
+  color: #3556c9;                   /* make the title blue */
+}
+
+ul {                                /* style the list <ul> */
+  list-style: none;                 /* remove the bullet points */
+  padding: 0;                       /* remove the default indent on the left */
+}
+
+li {                                /* style each list item <li> */
+  background: white;                /* white card behind each item */
+  border-radius: 8px;               /* round the corners */
+  padding: 10px;                    /* space INSIDE the card, around the text */
+  margin: 8px auto;                 /* 8px space above/below; auto = center horizontally */
+  max-width: 300px;                 /* the card is never wider than 300px */
+}
+
+button {                            /* style the <button> */
+  background: #3556c9;              /* blue button */
+  color: white;                     /* white text on the button */
+  border: 0;                        /* remove the default grey border */
+  padding: 12px 24px;               /* 12px top/bottom, 24px left/right inside the button */
+  border-radius: 8px;               /* rounded corners */
+  font-size: 16px;                  /* text size */
+  cursor: pointer;                  /* show the hand cursor on hover */
+}
