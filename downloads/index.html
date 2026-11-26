@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Course code files</title>
+<style>
+:root{--bg:#f4f5f7;--card:#fff;--tx:#1c2230;--mu:#5b6475;--ac:#3556c9;--bd:#d9dde5}
+@media (prefers-color-scheme:dark){:root{--bg:#14171f;--card:#1d212c;--tx:#e8eaf0;--mu:#9aa3b5;--ac:#7b97f0;--bd:#2e3442}}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--tx);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding:5vh 5vw;max-width:980px;margin:auto}
+.tag{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--ac);font-weight:700}
+h1{font-size:clamp(28px,5vw,44px);margin:.2em 0}
+h2{font-size:24px;margin:.2em 0}
+p{color:var(--mu);line-height:1.5;margin:.4em 0}
+section{margin-top:44px;padding-top:24px;border-top:2px solid var(--bd)}
+.file{background:var(--card);border:1px solid var(--bd);border-radius:12px;margin-top:16px;overflow:hidden}
+.fh{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;padding:10px 14px;border-bottom:1px solid var(--bd)}
+.fh span{display:flex;gap:8px;flex-wrap:wrap}
+pre{padding:14px;font-size:14px;line-height:1.5;overflow:auto;max-height:46vh;color:var(--tx);tab-size:2}
+.b{display:inline-block;border:0;background:var(--ac);color:#fff;border-radius:8px;padding:7px 14px;font:inherit;font-size:14px;cursor:pointer;text-decoration:none}
+.b.alt{background:transparent;color:var(--ac);border:1px solid var(--ac)}
+.how{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:16px;margin-top:20px}
+.how li{color:var(--mu);margin:.3em 0 .3em 1.2em;line-height:1.5}
+a.home{color:var(--ac)}
+</style>
+</head>
+<body>
+<p><a class="home" href="../index.html">← Back to the course home</a></p>
+<div class="tag">Workshop files</div>
+<h1>Code files</h1>
+<div class="how"><b>How to use them in VS Code</b><ol>
+<li>Create a new folder on your computer.</li>
+<li>For each file, click <b>Copy code</b>, create a new file in VS Code with the same name, and paste. Or click <b>Download the whole folder</b> and unzip it.</li>
+<li>Keep files that belong together in the <b>same folder</b>.</li>
+<li>Open the HTML file with Live Server and see the result.</li></ol></div>
+<section id="with-and-without"><div class="tag">Session 1</div><h2>HTML, CSS and JS: with and without</h2><p>Three versions of the same page: HTML only, then + CSS, then + JavaScript.</p><p><a class="b" href="with-and-without.zip" download>Download the whole folder (.zip)</a></p>
+<div class="file"><div class="fh"><b>1-html-only.html</b><span><button class="b cp">Copy code</button><a class="b alt" href="with-and-without/1-html-only.html" download="1-html-only.html">Download</a><a class="b alt" href="with-and-without/1-html-only.html" target="_blank">See the result</a></span></div><pre>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;title&gt;My First Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;h1&gt;Hello, Lebanon!&lt;/h1&gt;
+  &lt;p&gt;I am learning web development.&lt;/p&gt;
+
+  &lt;h2&gt;What I will learn&lt;/h2&gt;
+  &lt;ul&gt;
+    &lt;li&gt;HTML: the structure&lt;/li&gt;
+    &lt;li&gt;CSS: the style&lt;/li&gt;
+    &lt;li&gt;JavaScript: the behavior&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;button&gt;Click me&lt;/button&gt;
+  &lt;p id=&quot;message&quot;&gt;&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre></div>
+<div class="file"><div class="fh"><b>2-html-css.html</b><span><button class="b cp">Copy code</button><a class="b alt" href="with-and-without/2-html-css.html" download="2-html-css.html">Download</a><a class="b alt" href="with-and-without/2-html-css.html" target="_blank">See the result</a></span></div><pre>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;title&gt;My First Page&lt;/title&gt;
+
+  &lt;!-- CSS: the style --&gt;
+  &lt;style&gt;
+    body {
+      font-family: Arial, sans-serif;
+      background: #eef2ff;
+      color: #1c2230;
+      text-align: center;
+      padding: 40px;
+    }
+    h1 {
+      color: #3556c9;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      background: white;
+      border-radius: 8px;
+      padding: 10px;
+      margin: 8px auto;
+      max-width: 300px;
+    }
+    button {
+      background: #3556c9;
+      color: white;
+      border: 0;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;h1&gt;Hello, Lebanon!&lt;/h1&gt;
+  &lt;p&gt;I am learning web development.&lt;/p&gt;
+
+  &lt;h2&gt;What I will learn&lt;/h2&gt;
+  &lt;ul&gt;
+    &lt;li&gt;HTML: the structure&lt;/li&gt;
+    &lt;li&gt;CSS: the style&lt;/li&gt;
+    &lt;li&gt;JavaScript: the behavior&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;button&gt;Click me&lt;/button&gt;
+  &lt;p id=&quot;message&quot;&gt;&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre></div>
+<div class="file"><div class="fh"><b>3-html-css-js.html</b><span><button class="b cp">Copy code</button><a class="b alt" href="with-and-without/3-html-css-js.html" download="3-html-css-js.html">Download</a><a class="b alt" href="with-and-without/3-html-css-js.html" target="_blank">See the result</a></span></div><pre>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;title&gt;My First Page&lt;/title&gt;
+
+  &lt;!-- CSS: the style --&gt;
+  &lt;style&gt;
+    body {
+      font-family: Arial, sans-serif;
+      background: #eef2ff;
+      color: #1c2230;
+      text-align: center;
+      padding: 40px;
+    }
+    h1 {
+      color: #3556c9;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      background: white;
+      border-radius: 8px;
+      padding: 10px;
+      margin: 8px auto;
+      max-width: 300px;
+    }
+    button {
+      background: #3556c9;
+      color: white;
+      border: 0;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;h1&gt;Hello, Lebanon!&lt;/h1&gt;
+  &lt;p&gt;I am learning web development.&lt;/p&gt;
+
+  &lt;h2&gt;What I will learn&lt;/h2&gt;
+  &lt;ul&gt;
+    &lt;li&gt;HTML: the structure&lt;/li&gt;
+    &lt;li&gt;CSS: the style&lt;/li&gt;
+    &lt;li&gt;JavaScript: the behavior&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;button onclick=&quot;sayHi()&quot;&gt;Click me&lt;/button&gt;
+  &lt;p id=&quot;message&quot;&gt;&lt;/p&gt;
+
+  &lt;!-- JavaScript: the behavior --&gt;
+  &lt;script&gt;
+    let clicks = 0;
+
+    function sayHi() {
+      clicks = clicks + 1;
+      document.getElementById(&quot;message&quot;).textContent =
+        &quot;You clicked &quot; + clicks + &quot; time(s)!&quot;;
+    }
+  &lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre></div>
+</section>
+<section id="my-site"><div class="tag">Session 1</div><h2>Linked project</h2><p>HTML, CSS and JS in separate files, connected with link and script tags. Keep all files in the same folder.</p><p><a class="b" href="my-site.zip" download>Download the whole folder (.zip)</a></p>
+<div class="file"><div class="fh"><b>index.html</b><span><button class="b cp">Copy code</button><a class="b alt" href="my-site/index.html" download="index.html">Download</a><a class="b alt" href="my-site/index.html" target="_blank">See the result</a></span></div><pre>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;title&gt;My First Page&lt;/title&gt;
+
+  &lt;!-- Link the CSS file (style) --&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;h1&gt;Hello, Lebanon!&lt;/h1&gt;
+  &lt;p&gt;I am learning web development.&lt;/p&gt;
+
+  &lt;h2&gt;What I will learn&lt;/h2&gt;
+  &lt;ul&gt;
+    &lt;li&gt;HTML: the structure&lt;/li&gt;
+    &lt;li&gt;CSS: the style&lt;/li&gt;
+    &lt;li&gt;JavaScript: the behavior&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;button onclick=&quot;sayHi()&quot;&gt;Click me&lt;/button&gt;
+  &lt;p id=&quot;message&quot;&gt;&lt;/p&gt;
+
+  &lt;!-- Link the JavaScript file (behavior) --&gt;
+  &lt;script src=&quot;function.js&quot;&gt;&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre></div>
+<div class="file"><div class="fh"><b>style.css</b><span><button class="b cp">Copy code</button><a class="b alt" href="my-site/style.css" download="style.css">Download</a></span></div><pre>body {
+  font-family: Arial, sans-serif;
+  background: #eef2ff;
+  color: #1c2230;
+  text-align: center;
+  padding: 40px;
+}
+
+h1 {
+  color: #3556c9;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  background: white;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 8px auto;
+  max-width: 300px;
+}
+
+button {
+  background: #3556c9;
+  color: white;
+  border: 0;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+</pre></div>
+<div class="file"><div class="fh"><b>function.js</b><span><button class="b cp">Copy code</button><a class="b alt" href="my-site/function.js" download="function.js">Download</a></span></div><pre>let clicks = 0;
+
+function sayHi() {
+  clicks = clicks + 1;
+  document.getElementById(&quot;message&quot;).textContent =
+    &quot;You clicked &quot; + clicks + &quot; time(s)!&quot;;
+}
+</pre></div>
+<div class="file"><div class="fh"><b>style-explained.css</b><span><button class="b cp">Copy code</button><a class="b alt" href="my-site/style-explained.css" download="style-explained.css">Download</a></span></div><pre>/* HOW CSS IS READ:
+   selector { property: value; }
+   selector = WHAT to style     property = WHICH thing to change     value = HOW */
+
+body {                              /* style the whole page body */
+  font-family: Arial, sans-serif;   /* font used for all text (sans-serif = fallback) */
+  background: #eef2ff;              /* page background color (light blue) */
+  color: #1c2230;                   /* default text color (dark) */
+  text-align: center;               /* center all the text */
+  padding: 40px;                    /* space between the page edge and the content */
+}
+
+h1 {                                /* style only the &lt;h1&gt; heading */
+  color: #3556c9;                   /* make the title blue */
+}
+
+ul {                                /* style the list &lt;ul&gt; */
+  list-style: none;                 /* remove the bullet points */
+  padding: 0;                       /* remove the default indent on the left */
+}
+
+li {                                /* style each list item &lt;li&gt; */
+  background: white;                /* white card behind each item */
+  border-radius: 8px;               /* round the corners */
+  padding: 10px;                    /* space INSIDE the card, around the text */
+  margin: 8px auto;                 /* 8px space above/below; auto = center horizontally */
+  max-width: 300px;                 /* the card is never wider than 300px */
+}
+
+button {                            /* style the &lt;button&gt; */
+  background: #3556c9;              /* blue button */
+  color: white;                     /* white text on the button */
+  border: 0;                        /* remove the default grey border */
+  padding: 12px 24px;               /* 12px top/bottom, 24px left/right inside the button */
+  border-radius: 8px;               /* rounded corners */
+  font-size: 16px;                  /* text size */
+  cursor: pointer;                  /* show the hand cursor on hover */
+}
+</pre></div>
+</section>
+<section id="html-explained"><div class="tag">Session 3</div><h2>HTML explained</h2><p>One file with a comment on every tag.</p><p><a class="b" href="html-explained.zip" download>Download the whole folder (.zip)</a></p>
+<div class="file"><div class="fh"><b>html-explained.html</b><span><button class="b cp">Copy code</button><a class="b alt" href="html-explained/html-explained.html" download="html-explained.html">Download</a><a class="b alt" href="html-explained/html-explained.html" target="_blank">See the result</a></span></div><pre>&lt;!DOCTYPE html&gt;
+&lt;!-- 1. Tells the browser: &quot;this file is HTML5&quot;. Always the first line. --&gt;
+
+&lt;html lang=&quot;en&quot;&gt;
+&lt;!-- 2. &lt;html&gt; wraps the WHOLE page. lang=&quot;en&quot; = the page language is English. --&gt;
+
+&lt;head&gt;
+  &lt;!-- 3. &lt;head&gt; = information FOR THE BROWSER. Nothing in here shows on the page. --&gt;
+
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;!-- 4. Lets the page show all letters correctly (including Arabic and accents). --&gt;
+
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;!-- 5. Makes the page fit phone screens properly. --&gt;
+
+  &lt;title&gt;My First Page&lt;/title&gt;
+  &lt;!-- 6. The text shown on the browser TAB (look at the top of your browser). --&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+  &lt;!-- 7. &lt;body&gt; = everything you SEE on the page. --&gt;
+
+  &lt;!-- HOW TO READ A TAG:
+       &lt;p&gt;Hello&lt;/p&gt;
+       &lt;p&gt;    = opening tag (starts the element)
+       Hello  = the content
+       &lt;/p&gt;   = closing tag (has a slash) --&gt;
+
+
+  &lt;header&gt;
+    &lt;!-- 8. &lt;header&gt; = the top of the page (logo, title). --&gt;
+
+    &lt;h1&gt;My Name&lt;/h1&gt;
+    &lt;!-- 9. &lt;h1&gt; = the MAIN heading. Use one per page. The biggest text. --&gt;
+  &lt;/header&gt;
+
+
+  &lt;nav&gt;
+    &lt;!-- 10. &lt;nav&gt; = the navigation menu (links to other pages). --&gt;
+
+    &lt;a href=&quot;#&quot;&gt;Home&lt;/a&gt;
+    &lt;!-- 11. &lt;a&gt; = a link. The &quot;href&quot; attribute says where the link goes.
+         href=&quot;#&quot; means &quot;stay on this page&quot; (just for practice). --&gt;
+
+    &lt;a href=&quot;https://www.wikipedia.org&quot;&gt;Wikipedia&lt;/a&gt;
+    &lt;!-- 12. A real link. Click it to go to Wikipedia. --&gt;
+  &lt;/nav&gt;
+
+
+  &lt;main&gt;
+    &lt;!-- 13. &lt;main&gt; = the main content of the page. --&gt;
+
+    &lt;h2&gt;About me&lt;/h2&gt;
+    &lt;!-- 14. &lt;h2&gt; = a smaller heading. There is also h3, h4, h5, h6 (smaller each time). --&gt;
+
+    &lt;p&gt;I am learning web development.&lt;/p&gt;
+    &lt;!-- 15. &lt;p&gt; = a paragraph of text. --&gt;
+
+    &lt;p&gt;This is a &lt;strong&gt;bold&lt;/strong&gt; word and this is an &lt;em&gt;italic&lt;/em&gt; word.&lt;/p&gt;
+    &lt;!-- 16. &lt;strong&gt; = bold (important). &lt;em&gt; = italic (emphasis). They go INSIDE other tags. --&gt;
+
+    &lt;img src=&quot;data:image/svg+xml,%3Csvg xmlns=&#x27;http://www.w3.org/2000/svg&#x27; width=&#x27;120&#x27; height=&#x27;120&#x27;%3E%3Crect width=&#x27;120&#x27; height=&#x27;120&#x27; rx=&#x27;16&#x27; fill=&#x27;%233556c9&#x27;/%3E%3C/svg%3E&quot; alt=&quot;A blue square&quot; width=&quot;120&quot;&gt;
+    &lt;!-- 17. &lt;img&gt; = an image. It has NO closing tag.
+         src = where the picture file is (here a small built-in picture; normally &quot;photo.jpg&quot;).
+         alt = a text description (for screen readers and when the image can&#x27;t load).
+         width = the size in pixels. --&gt;
+
+    &lt;h2&gt;My hobbies&lt;/h2&gt;
+
+    &lt;ul&gt;
+      &lt;!-- 18. &lt;ul&gt; = an UNORDERED list (bullet points). --&gt;
+      &lt;li&gt;Reading&lt;/li&gt;
+      &lt;li&gt;Football&lt;/li&gt;
+      &lt;li&gt;Music&lt;/li&gt;
+      &lt;!-- 19. &lt;li&gt; = one list item. It goes INSIDE &lt;ul&gt; or &lt;ol&gt;. --&gt;
+    &lt;/ul&gt;
+
+    &lt;h2&gt;My steps&lt;/h2&gt;
+
+    &lt;ol&gt;
+      &lt;!-- 20. &lt;ol&gt; = an ORDERED list (numbers 1, 2, 3). --&gt;
+      &lt;li&gt;Install VS Code&lt;/li&gt;
+      &lt;li&gt;Write HTML&lt;/li&gt;
+      &lt;li&gt;Open with Live Server&lt;/li&gt;
+    &lt;/ol&gt;
+
+    &lt;button&gt;Click me&lt;/button&gt;
+    &lt;!-- 21. &lt;button&gt; = a button. It does nothing yet. JavaScript will make it work later. --&gt;
+  &lt;/main&gt;
+
+
+  &lt;footer&gt;
+    &lt;!-- 22. &lt;footer&gt; = the bottom of the page (contact, copyright). --&gt;
+
+    &lt;p&gt;Sidon, Lebanon&lt;/p&gt;
+  &lt;/footer&gt;
+
+  &lt;!-- 23. NESTING: tags go INSIDE other tags, like boxes in boxes.
+       &lt;body&gt; contains &lt;main&gt;, &lt;main&gt; contains &lt;ul&gt;, &lt;ul&gt; contains &lt;li&gt;.
+       We indent the inner lines so the structure is easy to see. --&gt;
+
+  &lt;!-- 24. This is a COMMENT: it starts with a less-than sign, an exclamation mark and two dashes, and ends with two dashes and a greater-than sign.
+       The browser ignores it. We use comments to leave notes for people. --&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre></div>
+</section>
+<section id="portfolio-template"><div class="tag">Session 3</div><h2>Portfolio template</h2><p>Fill in every CHANGE ME, save, and watch the page.</p><p><a class="b" href="portfolio-template.zip" download>Download the whole folder (.zip)</a></p>
+<div class="file"><div class="fh"><b>index.html</b><span><button class="b cp">Copy code</button><a class="b alt" href="portfolio-template/index.html" download="index.html">Download</a><a class="b alt" href="portfolio-template/index.html" target="_blank">See the result</a></span></div><pre>&lt;!DOCTYPE html&gt;
+&lt;!-- PORTFOLIO TEMPLATE
+     1. Find every &quot;CHANGE ME&quot; and replace it with your own words.
+     2. Save (Ctrl+S / Cmd+S) and look at the page in Live Server.
+     3. Experiment! Delete a line, add a line, and see what happens. --&gt;
+
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+
+  &lt;title&gt;CHANGE ME: My Web Profile&lt;/title&gt;
+  &lt;!-- The text on the browser TAB. --&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+  &lt;header&gt;
+    &lt;!-- header = the top of the page --&gt;
+    &lt;h1&gt;CHANGE ME: Your Name&lt;/h1&gt;
+    &lt;!-- h1 = the main heading. Use only one per page. --&gt;
+  &lt;/header&gt;
+
+
+  &lt;main&gt;
+    &lt;!-- main = the main content of the page --&gt;
+
+    &lt;section&gt;
+      &lt;!-- section = one topic of the page --&gt;
+      &lt;h2&gt;About me&lt;/h2&gt;
+      &lt;!-- h2 = a heading for this section. Try changing it to h3 and see the size change. --&gt;
+
+      &lt;p&gt;CHANGE ME: write 2 or 3 sentences about yourself.&lt;/p&gt;
+      &lt;!-- p = a paragraph of text. Add another p to add another paragraph. --&gt;
+
+      &lt;img src=&quot;photo.jpg&quot; alt=&quot;CHANGE ME: describe your photo&quot;&gt;
+      &lt;!-- img = a picture.
+           src: put a file named photo.jpg in this same folder, OR paste an image link.
+           alt: the description shown if the image can&#x27;t load (and read by screen readers).
+           No photo yet? The alt text will show instead. That is normal! --&gt;
+
+      &lt;p&gt;My favorite website:
+        &lt;a href=&quot;https://www.wikipedia.org&quot;&gt;CHANGE ME: link text&lt;/a&gt;
+      &lt;/p&gt;
+      &lt;!-- a = a link. href = where it goes. The text between the tags is what people click. --&gt;
+    &lt;/section&gt;
+
+
+    &lt;section&gt;
+      &lt;h2&gt;My hobbies and skills&lt;/h2&gt;
+
+      &lt;ul&gt;
+        &lt;!-- ul = a bullet list. Each li is one item. --&gt;
+        &lt;li&gt;CHANGE ME: hobby or skill 1&lt;/li&gt;
+        &lt;li&gt;CHANGE ME: hobby or skill 2&lt;/li&gt;
+        &lt;li&gt;CHANGE ME: hobby or skill 3&lt;/li&gt;
+        &lt;!-- Want a 4th item? Copy a whole li line and paste it here. --&gt;
+      &lt;/ul&gt;
+    &lt;/section&gt;
+
+
+    &lt;section&gt;
+      &lt;h2&gt;Contact me&lt;/h2&gt;
+      &lt;!-- LATER: we will add a form here. --&gt;
+    &lt;/section&gt;
+
+  &lt;/main&gt;
+
+
+  &lt;footer&gt;
+    &lt;!-- footer = the bottom of the page --&gt;
+    &lt;p&gt;CHANGE ME: your city · 2026&lt;/p&gt;
+  &lt;/footer&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre></div>
+</section>
+<section id="css-starter"><div class="tag">Session 4</div><h2>CSS starter</h2><p>The profile page and a commented style.css. Keep both files in the same folder.</p><p><a class="b" href="css-starter.zip" download>Download the whole folder (.zip)</a></p>
+<div class="file"><div class="fh"><b>index.html</b><span><button class="b cp">Copy code</button><a class="b alt" href="css-starter/index.html" download="index.html">Download</a><a class="b alt" href="css-starter/index.html" target="_blank">See the result</a></span></div><pre>&lt;!DOCTYPE html&gt;
+&lt;!-- CSS STARTER: this is the Session 3 portfolio template, now linked to style.css.
+     If you already have your own index.html, just add the &lt;link&gt; line to YOUR &lt;head&gt;. --&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;title&gt;CHANGE ME: My Web Profile&lt;/title&gt;
+
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+  &lt;!-- THIS LINE connects style.css to this page.
+       Both files must be in the SAME folder. --&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+
+  &lt;header&gt;
+    &lt;h1&gt;CHANGE ME: Your Name&lt;/h1&gt;
+  &lt;/header&gt;
+
+  &lt;main&gt;
+    &lt;section&gt;
+      &lt;h2&gt;About me&lt;/h2&gt;
+      &lt;p&gt;CHANGE ME: write 2 or 3 sentences about yourself.&lt;/p&gt;
+      &lt;img src=&quot;photo.jpg&quot; alt=&quot;CHANGE ME: describe your photo&quot;&gt;
+      &lt;p&gt;My favorite website:
+        &lt;a href=&quot;https://www.wikipedia.org&quot;&gt;CHANGE ME: link text&lt;/a&gt;
+      &lt;/p&gt;
+    &lt;/section&gt;
+
+    &lt;section&gt;
+      &lt;h2&gt;My hobbies and skills&lt;/h2&gt;
+      &lt;ul&gt;
+        &lt;li&gt;CHANGE ME: hobby or skill 1&lt;/li&gt;
+        &lt;li&gt;CHANGE ME: hobby or skill 2&lt;/li&gt;
+        &lt;li&gt;CHANGE ME: hobby or skill 3&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/section&gt;
+
+    &lt;section&gt;
+      &lt;h2&gt;Contact me&lt;/h2&gt;
+      &lt;form&gt;
+        &lt;label for=&quot;name&quot;&gt;Name:&lt;/label&gt;
+        &lt;input type=&quot;text&quot; id=&quot;name&quot; name=&quot;name&quot;&gt;
+        &lt;label for=&quot;email&quot;&gt;Email:&lt;/label&gt;
+        &lt;input type=&quot;email&quot; id=&quot;email&quot; name=&quot;email&quot;&gt;
+        &lt;input type=&quot;submit&quot; value=&quot;Send&quot;&gt;
+      &lt;/form&gt;
+    &lt;/section&gt;
+  &lt;/main&gt;
+
+  &lt;footer&gt;
+    &lt;p&gt;CHANGE ME: your city · 2026&lt;/p&gt;
+  &lt;/footer&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre></div>
+<div class="file"><div class="fh"><b>style.css</b><span><button class="b cp">Copy code</button><a class="b alt" href="css-starter/style.css" download="style.css">Download</a></span></div><pre>/* STYLE TEMPLATE
+   How to use it: change a value, save (Ctrl+S / Cmd+S), and watch the page.
+   Each rule looks like:  selector { property: value; }          */
+
+
+/* 1. The whole page */
+body {
+  font-family: Arial, sans-serif;  /* CHANGE ME: try Georgia, Verdana, &quot;Courier New&quot; */
+  background-color: #ffffff;       /* CHANGE ME: the page background */
+  color: #222222;                  /* CHANGE ME: the default text color */
+  margin: 0;                       /* removes the space around the page edge */
+}
+
+
+/* 2. Headings */
+h1 {
+  color: #3556c9;                  /* CHANGE ME: try red, green, or any #hex color */
+  font-size: 36px;                 /* CHANGE ME: bigger or smaller */
+  text-align: center;              /* left, center, or right */
+}
+
+h2 {
+  color: #3556c9;
+  font-size: 24px;
+}
+
+
+/* 3. Text */
+p {
+  font-size: 18px;                 /* CHANGE ME */
+  line-height: 1.5;                /* space between lines */
+}
+
+a {
+  color: #3556c9;                  /* link color */
+}
+
+
+/* 4. The main page sections: one rule styles all three */
+header, section, footer {
+  padding: 20px;                   /* space INSIDE each box */
+  background-color: #f2f2f2;       /* CHANGE ME: try #cccccc or #eef2ff */
+}
+
+section {
+  margin: 20px;                    /* space OUTSIDE each section */
+  border: 1px solid #cccccc;       /* a thin gray border */
+}
+
+
+/* 5. Image */
+img {
+  width: 200px;                    /* CHANGE ME: the picture width */
+  border-radius: 8px;              /* rounded corners */
+}
+
+
+/* 6. Form */
+input, label {
+  display: block;                  /* each one on its own line */
+  margin-bottom: 10px;             /* space below each one */
+}
+
+input[type=&quot;submit&quot;] {
+  background-color: #007bff;       /* button color */
+  color: white;                    /* button text color */
+  border: none;                    /* removes the default border */
+  padding: 10px 15px;              /* space inside the button */
+}
+
+
+/* 7. Your turn! Add your own rules below. */
+</pre></div>
+</section>
+<section id="day4-activity"><div class="tag">Session 4</div><h2>Activity: 2 pages + CSS</h2><p>Change the HTML (CHANGE ME), then change the colors and sizes in style.css. All three files go in the same folder.</p><p><a class="b" href="day4-activity.zip" download>Download the whole folder (.zip)</a></p>
+<div class="file"><div class="fh"><b>index.html</b><span><button class="b cp">Copy code</button><a class="b alt" href="day4-activity/index.html" download="index.html">Download</a><a class="b alt" href="day4-activity/index.html" target="_blank">See the result</a></span></div><pre>&lt;!DOCTYPE html&gt;
+&lt;!-- DAY 4 ACTIVITY: Home page
+     PART 1 (HTML): replace every &quot;CHANGE ME&quot; with your own words, then save.
+     PART 2 (CSS):  open style.css and change the colors, sizes, and fonts.
+     This page and about.html both use the same style.css, so a change in
+     style.css changes BOTH pages. --&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;title&gt;CHANGE ME: My Mini Website&lt;/title&gt;
+
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+  &lt;!-- This line connects style.css to this page. --&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;header&gt;
+    &lt;h1&gt;CHANGE ME: Your Name&lt;/h1&gt;
+  &lt;/header&gt;
+
+  &lt;nav&gt;
+    &lt;a class=&quot;menu-link&quot; href=&quot;index.html&quot;&gt;Home&lt;/a&gt;
+    &lt;a class=&quot;menu-link&quot; href=&quot;about.html&quot;&gt;About&lt;/a&gt;
+    &lt;!-- class=&quot;menu-link&quot; matches .menu-link in style.css --&gt;
+  &lt;/nav&gt;
+
+  &lt;main&gt;
+
+    &lt;section&gt;
+      &lt;h2&gt;Welcome&lt;/h2&gt;
+      &lt;p id=&quot;welcome&quot;&gt;CHANGE ME: write a one-sentence welcome.&lt;/p&gt;
+      &lt;!-- id=&quot;welcome&quot; matches #welcome in style.css --&gt;
+      &lt;p&gt;CHANGE ME: write 2 sentences about what this website is about.&lt;/p&gt;
+      &lt;img src=&quot;photo.jpg&quot; alt=&quot;CHANGE ME: describe your photo&quot;&gt;
+    &lt;/section&gt;
+
+    &lt;section&gt;
+      &lt;h2&gt;My favorite things&lt;/h2&gt;
+      &lt;ul&gt;
+        &lt;li&gt;CHANGE ME: favorite thing 1&lt;/li&gt;
+        &lt;li&gt;CHANGE ME: favorite thing 2&lt;/li&gt;
+        &lt;li&gt;CHANGE ME: favorite thing 3&lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;p class=&quot;highlight&quot;&gt;CHANGE ME: your favorite quote or a fun fact.&lt;/p&gt;
+      &lt;!-- class=&quot;highlight&quot; matches .highlight in style.css --&gt;
+    &lt;/section&gt;
+
+    &lt;section&gt;
+      &lt;h2&gt;Want to know more?&lt;/h2&gt;
+      &lt;a class=&quot;button&quot; href=&quot;about.html&quot;&gt;About me&lt;/a&gt;
+      &lt;!-- class=&quot;button&quot; matches .button in style.css --&gt;
+    &lt;/section&gt;
+
+  &lt;/main&gt;
+
+  &lt;footer&gt;
+    &lt;p&gt;CHANGE ME: your city · 2026&lt;/p&gt;
+  &lt;/footer&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre></div>
+<div class="file"><div class="fh"><b>about.html</b><span><button class="b cp">Copy code</button><a class="b alt" href="day4-activity/about.html" download="about.html">Download</a><a class="b alt" href="day4-activity/about.html" target="_blank">See the result</a></span></div><pre>&lt;!DOCTYPE html&gt;
+&lt;!-- DAY 4 ACTIVITY: About page
+     Replace every &quot;CHANGE ME&quot; with your own words, then save.
+     It uses the same style.css as index.html. --&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;title&gt;CHANGE ME: About Me&lt;/title&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;header&gt;
+    &lt;h1&gt;CHANGE ME: Your Name&lt;/h1&gt;
+  &lt;/header&gt;
+
+  &lt;nav&gt;
+    &lt;a class=&quot;menu-link&quot; href=&quot;index.html&quot;&gt;Home&lt;/a&gt;
+    &lt;a class=&quot;menu-link&quot; href=&quot;about.html&quot;&gt;About&lt;/a&gt;
+  &lt;/nav&gt;
+
+  &lt;main&gt;
+
+    &lt;section&gt;
+      &lt;h2&gt;About me&lt;/h2&gt;
+      &lt;p&gt;CHANGE ME: write 3 sentences about yourself: who you are, where you live, and what you like.&lt;/p&gt;
+      &lt;p class=&quot;highlight&quot;&gt;CHANGE ME: one thing people do not know about you.&lt;/p&gt;
+    &lt;/section&gt;
+
+    &lt;section&gt;
+      &lt;h2&gt;My skills&lt;/h2&gt;
+      &lt;ul&gt;
+        &lt;li&gt;CHANGE ME: skill 1&lt;/li&gt;
+        &lt;li&gt;CHANGE ME: skill 2&lt;/li&gt;
+        &lt;li&gt;CHANGE ME: skill 3&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/section&gt;
+
+    &lt;section&gt;
+      &lt;h2&gt;My goals&lt;/h2&gt;
+      &lt;ol&gt;
+        &lt;li&gt;CHANGE ME: goal 1&lt;/li&gt;
+        &lt;li&gt;CHANGE ME: goal 2&lt;/li&gt;
+      &lt;/ol&gt;
+      &lt;a class=&quot;button&quot; href=&quot;index.html&quot;&gt;Back to home&lt;/a&gt;
+    &lt;/section&gt;
+
+  &lt;/main&gt;
+
+  &lt;footer&gt;
+    &lt;p&gt;CHANGE ME: your city · 2026&lt;/p&gt;
+  &lt;/footer&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre></div>
+<div class="file"><div class="fh"><b>style.css</b><span><button class="b cp">Copy code</button><a class="b alt" href="day4-activity/style.css" download="style.css">Download</a></span></div><pre>/* DAY 4 ACTIVITY: style.css
+   HOW TO PLAY: change a value, save (Ctrl+S / Cmd+S), and look at BOTH pages.
+   Every rule looks like:   selector { property: value; }
+   Look for &quot;CHANGE ME&quot; comments for ideas. */
+
+
+/* ---------- 1. THE WHOLE PAGE ---------- */
+body {
+  font-family: Arial, sans-serif;   /* CHANGE ME: try Georgia, Verdana, &quot;Courier New&quot; */
+  background-color: #f4f6ff;        /* CHANGE ME: page background, try #fff3e0 or #e8f5e9 */
+  color: #222222;                   /* CHANGE ME: text color */
+  margin: 0;                        /* removes the space around the page edge */
+}
+
+
+/* ---------- 2. HEADER AND MENU ---------- */
+header {
+  background-color: #3556c9;        /* CHANGE ME: header color, try #c0392b or #1b7f5c */
+  color: white;                     /* the color of the name in the header */
+  padding: 20px;                    /* space inside the header */
+  text-align: center;               /* left, center, or right */
+}
+
+h1 {
+  font-size: 36px;                  /* CHANGE ME: bigger or smaller */
+  margin: 0;                        /* removes the space around the heading */
+}
+
+nav {
+  background-color: #2a45a0;        /* CHANGE ME: menu bar color */
+  padding: 10px;
+  text-align: center;
+}
+
+.menu-link {                        /* the dot means: every element with class=&quot;menu-link&quot; */
+  color: white;
+  font-size: 18px;                  /* CHANGE ME */
+  margin: 0 12px;                   /* space left and right of each link */
+  text-decoration: none;            /* removes the underline; try underline */
+}
+
+
+/* ---------- 3. TEXT ---------- */
+h2 {
+  color: #3556c9;                   /* CHANGE ME: heading color */
+  font-size: 26px;                  /* CHANGE ME */
+}
+
+p {
+  font-size: 18px;                  /* CHANGE ME */
+  line-height: 1.5;                 /* space between lines */
+}
+
+#welcome {                          /* the hash means: the one element with id=&quot;welcome&quot; */
+  font-size: 24px;
+  color: #3556c9;                   /* CHANGE ME */
+}
+
+.highlight {                        /* every element with class=&quot;highlight&quot; */
+  background-color: #fff3a3;        /* CHANGE ME: try #ffd6e0 or #d6f5ff */
+  padding: 10px;
+}
+
+
+/* ---------- 4. SECTIONS (THE WHITE CARDS) ---------- */
+main {
+  padding: 20px;
+}
+
+section {
+  background-color: white;
+  border: 1px solid #cccccc;        /* CHANGE ME: try 3px solid #3556c9 */
+  border-radius: 8px;               /* rounded corners: try 20px or 0px */
+  padding: 20px;                    /* space INSIDE each card */
+  margin-bottom: 20px;              /* space OUTSIDE, below each card */
+}
+
+img {
+  width: 200px;                     /* CHANGE ME: picture width */
+  border-radius: 8px;
+}
+
+
+/* ---------- 5. BUTTON ---------- */
+.button {
+  background-color: #3556c9;        /* CHANGE ME: button color */
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.button:hover {                     /* only while the mouse is on the button */
+  background-color: #1d3a9e;
+}
+
+
+/* ---------- 6. FOOTER ---------- */
+footer {
+  text-align: center;
+  color: #666666;
+  padding: 20px;
+}
+
+
+/* ---------- 7. YOUR TURN: CHALLENGES ----------
+   1. Choose a color theme (3 colors) and use it everywhere.
+   2. Make the headings a different font.
+   3. Make the section cards bigger with more padding.
+   4. Add a shadow to the cards:  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+   5. Add your own rule below (for example, style the li tags).
+---------------------------------------------------- */
+</pre></div>
+</section>
+<script>
+document.querySelectorAll('.cp').forEach(function(b){b.onclick=function(){
+ var pre=b.closest('.file').querySelector('pre'),t=pre.textContent;
+ function sel(){var r=document.createRange();r.selectNodeContents(pre);var s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Selected: press Ctrl+C'}
+ try{navigator.clipboard.writeText(t).then(function(){b.textContent='Copied!';setTimeout(function(){b.textContent='Copy code'},1800)},sel)}catch(e){sel()}}});
+</script>
+</body>
+</html>
